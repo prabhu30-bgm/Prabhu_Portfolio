@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand-bg: #0A0A0A;
+  --color-brand-sec-bg: #111111;
+  --color-brand-card: #141414;
+  --color-brand-accent: #db2e2e;
+  --color-brand-hover: #ff5c5c;
+  --color-brand-text-sec: #A0A0A0;
+  --color-brand-border: rgba(219, 46, 46, 0.15);
+}
+
+@layer base {
+  html {
+    scroll-behavior: initial; /* Controlled by Lenis */
+    background-color: var(--color-brand-bg);
+  }
+
+  body {
+    background-color: var(--color-brand-bg);
+    color: #FFFFFF;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom Scrollbar for modern web experience */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-brand-bg);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border-radius: 4px;
+    border: 2px solid var(--color-brand-bg);
+    transition: background 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-hover);
+  }
+}
+
+@layer components {
+  /* Neon Accents and Glows */
+  .text-glow {
+    text-shadow: 0 0 15px rgba(219, 46, 46, 0.4);
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 15px rgba(219, 46, 46, 0.08);
+    border-color: var(--color-brand-border);
+  }
+
+  .border-glow:hover {
+    box-shadow: 0 0 25px rgba(219, 46, 46, 0.2);
+    border-color: rgba(219, 46, 46, 0.4);
+  }
+
+  /* Glassmorphism Classes */
+  .glass-nav {
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card {
+    background: rgba(16, 16, 16, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* Custom styles for Lenis Smooth Scroll */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Dynamic Cursor Glow Dot */
+.cursor-glow-dot {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(219, 46, 46, 0.1) 0%, rgba(219, 46, 46, 0.02) 40%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Scroll progress bar top-screen */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-brand-accent), var(--color-brand-hover));
+  transform-origin: 0%;
+  z-index: 100;
+}
+
+.map-container iframe {
+  filter: grayscale(1) invert(0.9) contrast(1.2);
+}
