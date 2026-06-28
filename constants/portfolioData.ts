@@ -37,7 +37,7 @@ export const profile: IProfile = {
   phone: '+91 9972920779',
   phoneHref: 'tel:+919972920779',
   resumeUrl: '/resume.pdf',
-  github: 'https://github.com/prabhu30-bgm/prabhu30-bgm',
+  github: 'https://github.com/prabhu30-bgm',
   pixable: "https://github.com/prabhu30-bgm/Pixable-API",
   bms: "https://github.com/prabhu30-bgm/Public-Transport-Management-Platform",
   saviour: "https://github.com/prabhu30-bgm/The_Saviour",
