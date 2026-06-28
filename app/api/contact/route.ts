@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 
-// 1. Define Mongoose Schema and Model safely for Next.js hot-reloading
+// 1. Setup the schema safely
 const ContactSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
@@ -9,17 +9,29 @@ const ContactSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+// Explicitly ensure bufferCommands is enabled so queries wait for the connection
+ContactSchema.set('bufferCommands', true);
+
 const ContactModel = mongoose.models.Contact || mongoose.model('Contact', ContactSchema);
 
-// 2. Database Connection Helper
-async function connectToDatabase() {
-  if (mongoose.connection.readyState >= 1) return;
+// 2. Strong Database Connection Strategy for Serverless environments
+let cachedConnection: typeof mongoose | null = null;
 
-  if (!process.env.MONGODB_URI) {
-    throw new Error('Missing environment variable: MONGODB_URI. Add it to your .env file.');
+async function connectToDatabase() {
+  if (cachedConnection) {
+    return cachedConnection;
   }
 
-  await mongoose.connect(process.env.MONGODB_URI);
+  if (!process.env.MONGODB_URI) {
+    throw new Error('Missing environment variable: MONGODB_URI.');
+  }
+
+  // Enforce explicit await on the core connection promise
+  cachedConnection = await mongoose.connect(process.env.MONGODB_URI, {
+    bufferCommands: true, // Tells mongoose to safely queue queries until connection is active
+  });
+
+  return cachedConnection;
 }
 
 // 3. Main POST Handler
@@ -28,7 +40,6 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { name, email, message } = body;
 
-    // Validate form fields presence
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: 'Name, email, and message are required.' },
@@ -36,14 +47,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Connect to MongoDB
+    // Explicitly wait until the connection is fully finalized
     await connectToDatabase();
 
-    // Insert document directly into your database collection
+    // Insert document safely
     const newSubmission = new ContactModel({ name, email, message });
     await newSubmission.save();
 
-    // Return success to trigger client effects (Confetti)
     return NextResponse.json(
       { success: true, message: 'Message successfully saved to database.' },
       { status: 200 }
