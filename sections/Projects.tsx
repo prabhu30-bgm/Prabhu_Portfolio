@@ -181,9 +181,11 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full items-stretch">
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory w-full pb-8 scrollbar-thin scroll-smooth items-stretch">
           {projectsData?.map((project, idx) => (
-            <ProjectCard key={project.id} project={project} index={idx} />
+            <div key={project.id} className="flex-shrink-0 w-[88vw] sm:w-[450px] lg:w-[480px] snap-center h-auto">
+              <ProjectCard project={project} index={idx} />
+            </div>
           ))}
         </div>
       </div>

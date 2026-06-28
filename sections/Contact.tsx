@@ -30,12 +30,13 @@ export function Contact() {
                 body: JSON.stringify(data),
             });
 
+            const responseData = await apiResponse.json();
+
             if (!apiResponse.ok) {
-                const errorData = await apiResponse.json();
-                throw new Error(errorData.error || 'Server rejected message routing.');
+                throw new Error(responseData.error || 'Server rejected database registration pipeline.');
             }
 
-            // Fire celebration effects upon instant delivery success
+            // Fire celebration effects upon database storage success
             confetti({
                 particleCount: 150,
                 spread: 80,
@@ -47,9 +48,9 @@ export function Contact() {
             resetForm();
 
             setTimeout(() => setSubmitSuccess(false), 6000);
-        } catch (err) {
+        } catch (err: any) {
             console.error('Submission pipeline crash:', err);
-            alert('An error occurred while sending your message. Please try again.');
+            alert(err.message || 'An error occurred while saving your message. Please try again.');
             setIsSubmitting(false);
         }
     }
@@ -115,7 +116,7 @@ export function Contact() {
                                         </div>
                                         <h3 className="text-2xl font-bold font-display text-white uppercase tracking-tight">Message Sent!</h3>
                                         <p className="text-secondaryText text-sm font-light leading-relaxed max-w-sm">
-                                            Thank you for reaching out. Your transmission went straight to my inbox!
+                                            Thank you for reaching out. Your transmission went straight to my database logs!
                                         </p>
                                     </motion.div>
                                 ) : (

@@ -30,7 +30,7 @@ export function Hero() {
 
   return (
     <>
-      <section id="home" className="relative w-screen h-screen bg-brand-bg flex items-center overflow-hidden">
+      <section id="home" className="relative w-full h-auto bg-brand-bg flex items-center overflow-hidden py-16 md:py-24 lg:h-screen lg:py-0">
         {/* Background glow and geometric overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
 
@@ -43,7 +43,7 @@ export function Hero() {
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
 
             {/* 1. TWO-LINE HUGE SYSTEM INITIALIZATION HEADER */}
-            <div className="flex flex-col font-display font-black text-5xl md:text-7xl tracking-wide uppercase text-white select-none leading-[0.95] mb-8">
+            <div className="flex flex-col font-display font-black text-3xl sm:text-5xl md:text-7xl tracking-wide uppercase text-white select-none leading-[0.95] mb-8">
               <div className="overflow-hidden py-0.5">
                 <motion.span
                   initial={{ y: "100%", opacity: 0 }}
@@ -84,7 +84,7 @@ export function Hero() {
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.22, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display font-black text-4xl md:text-3xl lg:text-5xl tracking-wide uppercase text-white select-none leading-tight"
+                className="font-display font-black text-2xl sm:text-4xl lg:text-5xl tracking-wide uppercase text-white select-none leading-tight"
               >
                 BASAVAPRABHU S K
               </motion.h1>

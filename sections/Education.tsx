@@ -22,7 +22,7 @@ export function EducationInternship() {
 
     // 2. Safely map dataset items to relocate the SQL Certificate with optional chaining checks
     const processedTimeline = displayTimeline.map((item) => {
-        if (item && item.id === 'cert-1') {
+        if (item && (item.id === 'cert-1' || item.id === 'cert-2')) {
             return { ...item, type: 'experience' as const };
         }
         return item;
@@ -45,13 +45,13 @@ export function EducationInternship() {
     return (
         <section
             id="education"
-            className="relative w-screen h-screen bg-brand-bg flex items-center overflow-hidden"
+            className="relative w-full h-auto bg-brand-bg flex items-center overflow-hidden py-16 md:py-24 lg:min-h-screen lg:py-32"
             style={{
                 backgroundColor: '#0A0A0A',
                 borderTop: '2px solid rgba(255, 255, 255, 0.08)',
             }}
         >
-            <div className="w-full max-w-7xl mx-auto relative z-10 flex flex-col h-auto overflow-visible">
+            <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 relative z-10 flex flex-col h-auto overflow-visible">
 
                 {/* Section Header */}
                 <div className="w-full flex justify-between items-baseline mb-4 border-b pb-2" style={{ borderColor: 'rgba(255, 255, 255, 0.08)' }}>
@@ -63,7 +63,7 @@ export function EducationInternship() {
                     </span>
                 </div>
 
-                <h2 className="text-3xl font-black tracking-wider uppercase mb-12 font-mono block" style={{ color: '#FFFFFF' }}>
+                <h2 className="text-2xl sm:text-3xl font-black tracking-wider uppercase mb-12 font-mono block" style={{ color: '#FFFFFF' }}>
                     EDUCATION & EXPERIENCE
                 </h2>
 

@@ -20,12 +20,12 @@ export function About() {
   ];
   return (
     <>
-      <section id="about" className="relative w-screen h-screen bg-brand-bg flex items-center overflow-hidden">
+      <section id="about" className="relative w-full h-auto bg-brand-bg flex items-center overflow-hidden py-16 md:py-24 lg:h-screen lg:py-0">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full">
 
           {/* Section Header */}
           <div className="flex flex-col text-left mb-10">
-            <span className="section-label text-brand-accent text-[50px]">OPERATOR</span>
+            <span className="section-label text-brand-accent text-3xl sm:text-4xl md:text-[50px]">OPERATOR</span>
           </div>
 
           {/* Content Area */}
@@ -37,7 +37,7 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-5 relative group h-[480px] overflow-hidden border border-brand-border/20 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+              className="lg:col-span-5 relative group h-[300px] sm:h-[400px] lg:h-[480px] overflow-hidden border border-brand-border/20 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             >
               <div className="absolute inset-0 bg-brand-accent/25 z-10 pointer-events-none mix-blend-color" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />

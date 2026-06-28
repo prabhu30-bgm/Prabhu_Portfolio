@@ -39,7 +39,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="py-28 relative overflow-hidden select-none px-[50px] flex justify-center w-full"
+      className="py-28 relative overflow-hidden select-none px-6 md:px-12 lg:px-[50px] flex justify-center w-full"
       style={{
         backgroundColor: '#0A0A0A', 
         borderTop: '2px solid rgba(255, 255, 255, 0.12)',
@@ -82,7 +82,7 @@ export function Skills() {
         </div>
 
         {/* Scaled Up Bold Structural Header */}
-        <h2 className="text-6xl md:text-5xl font-black tracking-widest text-white uppercase mb-12 font-mono">
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-widest text-white uppercase mb-12 font-mono">
           CORE SYSTEMS
         </h2>
 
