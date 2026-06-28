@@ -1,66 +1,42 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+// Initialize Resend with your API key from environment variables
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, message, recaptchaToken } = body; // Destructured token parameter
+    const { name, email, message } = body;
 
+    /* 1. Field Validation */
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Name, email and message are required.' },
+        { error: 'Name, email, and message are required.' },
         { status: 400 }
       );
     }
 
-    // Enforce reCAPTCHA token validation check
-    if (!recaptchaToken) {
-      return NextResponse.json(
-        { error: 'Verification failed: reCAPTCHA token missing.' },
-        { status: 400 }
-      );
-    }
-
-    // Grab environment variables safely on the server side
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-    const privateKey = process.env.EMAILJS_PRIVATE_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      console.error('EmailJS Environment configurations are missing.');
-      return NextResponse.json(
-        { error: 'Email service configuration error on server.' },
-        { status: 500 }
-      );
-    }
-
-    // Package parameters alongside the critical g-recaptcha-response property
-    const emailjsPayload = {
-      service_id: serviceId,
-      template_id: templateId,
-      user_id: publicKey,
-      accessToken: privateKey || undefined,
-      template_params: {
-        from_name: name,
-        reply_to: email,
-        message: message,
-      },
-      'g-recaptcha-response': recaptchaToken // Authenticates verification check with EmailJS 
-    };
-
-    const emailjsResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(emailjsPayload),
+    /* 2. Dispatch Email via Resend */
+    const emailResponse = await resend.emails.send({
+      from: 'Portfolio Contact <onboarding@resend.dev>',
+      to: ['basavaprabhukudenatti@gmail.com'], // 👈 FIXED: Matches your exact Resend account email
+      subject: `New Portfolio Message from ${name}`,
+      replyTo: email,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p style="white-space: pre-wrap;">${message}</p>
+      `,
     });
 
-    if (!emailjsResponse.ok) {
-      const errorText = await emailjsResponse.text();
-      console.error('EmailJS direct route dispatch failed:', errorText);
+    /* 3. Error Tracking */
+    if (emailResponse.error) {
+      console.error('Resend API Error details:', emailResponse.error);
       return NextResponse.json(
-        { error: 'Failed to dispatch email transmission due to verification.' },
+        { error: `Resend Error: ${emailResponse.error.message}` },
         { status: 502 }
       );
     }
@@ -72,6 +48,9 @@ export async function POST(req: NextRequest) {
 
   } catch (error: any) {
     console.error('API execution routing failure:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Internal server error' },
+      { status: 500 }
+    );
   }
 }

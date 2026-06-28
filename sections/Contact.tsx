@@ -1,6 +1,5 @@
 'use client';
 
-
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertCircle, CheckCircle2, Mail, MapPin, Phone, Send } from 'lucide-react';
@@ -33,10 +32,11 @@ export function Contact() {
             const responseData = await apiResponse.json();
 
             if (!apiResponse.ok) {
-                throw new Error(responseData.error || 'Server rejected database registration pipeline.');
+                // Updated error message string to match Resend API setup
+                throw new Error(responseData.error || 'Server failed to transmit message over the email routing pipeline.');
             }
 
-            // Fire celebration effects upon database storage success
+            // Fire celebration effects upon secure direct email transmission success
             confetti({
                 particleCount: 150,
                 spread: 80,
@@ -50,7 +50,7 @@ export function Contact() {
             setTimeout(() => setSubmitSuccess(false), 6000);
         } catch (err: any) {
             console.error('Submission pipeline crash:', err);
-            alert(err.message || 'An error occurred while saving your message. Please try again.');
+            alert(err.message || 'An error occurred while sending your message. Please try again.');
             setIsSubmitting(false);
         }
     }
@@ -116,7 +116,7 @@ export function Contact() {
                                         </div>
                                         <h3 className="text-2xl font-bold font-display text-white uppercase tracking-tight">Message Sent!</h3>
                                         <p className="text-secondaryText text-sm font-light leading-relaxed max-w-sm">
-                                            Thank you for reaching out. Your transmission went straight to my database logs!
+                                            Thank you for reaching out. Your transmission went straight to my email inbox!
                                         </p>
                                     </motion.div>
                                 ) : (
