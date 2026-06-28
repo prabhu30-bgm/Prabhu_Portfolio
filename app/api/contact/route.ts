@@ -1,68 +1,77 @@
 import { NextRequest, NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 
-// 1. Setup the schema safely
+/* =========================
+   1. Schema (safe init)
+========================= */
 const ContactSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  message: { type: String, required: true },
+  name: { type: String, required: true, trim: true },
+  email: { type: String, required: true, trim: true },
+  message: { type: String, required: true, trim: true },
   createdAt: { type: Date, default: Date.now },
 });
 
-// Explicitly ensure bufferCommands is enabled so queries wait for the connection
-ContactSchema.set('bufferCommands', true);
+/* Prevent model overwrite in dev (IMPORTANT in Next.js) */
+const ContactModel =
+  mongoose.models.Contact || mongoose.model('Contact', ContactSchema);
 
-const ContactModel = mongoose.models.Contact || mongoose.model('Contact', ContactSchema);
-
-// 2. Strong Database Connection Strategy for Serverless environments
-let cachedConnection: typeof mongoose | null = null;
+/* =========================
+   2. DB Cache (Vercel-safe)
+========================= */
+let cached: typeof mongoose | null = null;
 
 async function connectToDatabase() {
-  if (cachedConnection) {
-    return cachedConnection;
-  }
+  if (cached) return cached;
 
-  if (!process.env.MONGODB_URI) {
-    throw new Error('Missing environment variable: MONGODB_URI.');
-  }
+  const uri = process.env.MONGODB_URI;
+  if (!uri) throw new Error('MONGODB_URI is missing in environment variables');
 
-  // Enforce explicit await on the core connection promise
-  cachedConnection = await mongoose.connect(process.env.MONGODB_URI, {
-    bufferCommands: true, // Tells mongoose to safely queue queries until connection is active
-  });
-
-  return cachedConnection;
+  cached = await mongoose.connect(uri);
+  return cached;
 }
 
-// 3. Main POST Handler
+/* =========================
+   3. POST Handler
+========================= */
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { name, email, message } = body;
 
+    /* Validation */
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required.' },
+        { error: 'All fields (name, email, message) are required.' },
         { status: 400 }
       );
     }
 
-    // Explicitly wait until the connection is fully finalized
+    /* Connect DB */
     await connectToDatabase();
 
-    // Insert document safely
-    const newSubmission = new ContactModel({ name, email, message });
-    await newSubmission.save();
+    /* Save to MongoDB */
+    const newMessage = await ContactModel.create({
+      name,
+      email,
+      message,
+    });
 
     return NextResponse.json(
-      { success: true, message: 'Message successfully saved to database.' },
+      {
+        success: true,
+        message: 'Message stored successfully',
+        data: newMessage,
+      },
       { status: 200 }
     );
 
   } catch (error: any) {
-    console.error('API execution routing failure:', error);
+    console.error('Contact API Error:', error);
+
     return NextResponse.json(
-      { error: error.message || 'Internal database server error.' },
+      {
+        error: error.message || 'Internal server error',
+      },
       { status: 500 }
     );
   }

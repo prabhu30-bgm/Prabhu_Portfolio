@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertCircle, CheckCircle2, Mail, MapPin, Phone, Send } from 'lucide-react';
@@ -9,7 +10,6 @@ import { profile } from '@/constants/portfolioData';
 
 export function Contact() {
     const [submitSuccess, setSubmitSuccess] = useState(false);
-
     const initialFormState = { name: '', email: '', message: '' };
 
     const {
