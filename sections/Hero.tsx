@@ -30,7 +30,7 @@ export function Hero() {
 
   return (
     <>
-      <section id="home" className="relative min-h-screen bg-brand-bg flex items-center overflow-hidden pt-28 pb-[120px]">
+      <section id="home" className="relative w-screen h-screen bg-brand-bg flex items-center overflow-hidden">
         {/* Background glow and geometric overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
 

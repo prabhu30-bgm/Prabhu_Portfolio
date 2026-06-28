@@ -20,7 +20,7 @@ export function About() {
   ];
   return (
     <>
-      <section id="about" className="pt-[120px] pb-[120px] bg-brand-sec-bg border-t border-brand-border/10">
+      <section id="about" className="relative w-screen h-screen bg-brand-bg flex items-center overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full">
 
           {/* Section Header */}

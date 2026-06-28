@@ -1192,6 +1192,9 @@ video {
 .h-full {
   height: 100%;
 }
+.h-screen {
+  height: 100vh;
+}
 .max-h-\[38vh\] {
   max-height: 38vh;
 }
@@ -1261,6 +1264,9 @@ video {
 }
 .w-full {
   width: 100%;
+}
+.w-screen {
+  width: 100vw;
 }
 .max-w-2xl {
   max-width: 42rem;
@@ -1581,9 +1587,6 @@ video {
 .bg-brand-bg {
   background-color: var(--color-brand-bg);
 }
-.bg-brand-sec-bg {
-  background-color: var(--color-brand-sec-bg);
-}
 .bg-darkBg {
   background-color: var(--color-brand-bg);
 }
@@ -1712,10 +1715,6 @@ video {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
 .py-2\.5 {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
@@ -1748,9 +1747,6 @@ video {
 .pb-4 {
   padding-bottom: 1rem;
 }
-.pb-\[120px\] {
-  padding-bottom: 120px;
-}
 .pl-0 {
   padding-left: 0px;
 }
@@ -1769,14 +1765,8 @@ video {
 .pr-6 {
   padding-right: 1.5rem;
 }
-.pt-28 {
-  padding-top: 7rem;
-}
 .pt-3\.5 {
   padding-top: 0.875rem;
-}
-.pt-\[120px\] {
-  padding-top: 120px;
 }
 .text-left {
   text-align: left;
@@ -2415,6 +2405,11 @@ html.lenis {
   .md\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .md\:px-\[50px\] {
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .md\:text-3xl {

@@ -15,9 +15,9 @@ export interface IProfile {
   phoneHref: string;
   resumeUrl: string;
   github: string;
-  pixable:string;
-  bms:string;
-  saviour:string;
+  pixable: string;
+  bms: string;
+  saviour: string;
   linkedin: string;
   leetcode: string;
   shortIntro: string;
@@ -33,14 +33,14 @@ export const profile: IProfile = {
     'I am improving my problem-solving skills through LeetCode and strengthening my understanding of DSA, databases, and backend development.',
   location: 'Bengaluru, Karnataka, India',
   address: 'Bangalore, Karnataka',
-  email: 'basavaprabhu11@gmail.com',
+  email: 'basavaprabhukudenatti@gmail.com',
   phone: '+91 9972920779',
   phoneHref: 'tel:+919972920779',
   resumeUrl: '/resume.pdf',
   github: 'https://github.com/prabhu30-bgm/prabhu30-bgm',
-  pixable:"https://github.com/prabhu30-bgm/Pixable-API",
-  bms:"https://github.com/prabhu30-bgm/Public-Transport-Management-Platform",
-  saviour:"https://github.com/prabhu30-bgm/The_Saviour",
+  pixable: "https://github.com/prabhu30-bgm/Pixable-API",
+  bms: "https://github.com/prabhu30-bgm/Public-Transport-Management-Platform",
+  saviour: "https://github.com/prabhu30-bgm/The_Saviour",
   linkedin: 'https://www.linkedin.com/in/basavaprabhu-kudenatti/',
   leetcode: 'https://leetcode.com/u/5kCp4D1N4Q/',
   shortIntro: 'MERN Portfolio - Basavaprabhu',

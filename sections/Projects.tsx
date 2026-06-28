@@ -32,11 +32,13 @@ interface ProjectImagePlaceholderProps {
 
 export function ProjectImagePlaceholder({ isHovered, imageSrc, projectTitle }: ProjectImagePlaceholderProps) {
   return (
-    <div className="relative aspect-video w-full border bg-black/40 overflow-hidden flex flex-col items-center justify-center select-none transition-colors duration-300" style={{ borderColor: 'rgba(255, 255, 255, 0.15)' }}>
+    /* FIXED: Changed w-screen h-screen back to w-full aspect-video so it scales properly inside the card */
+    <div className="relative w-full aspect-video border bg-black/40 overflow-hidden flex flex-col items-center justify-center select-none transition-colors duration-300" style={{ borderColor: 'rgba(255, 255, 255, 0.15)' }}>
       {imageSrc ? (
         /* Removed grayscale and opacity constraints to restore full, original asset rendering color */
         <div className="absolute inset-0 w-full h-full transition-all duration-700 group-hover:scale-[1.02] p-2">
-          <Image src={imageSrc} alt={projectTitle} fill sizes="400px" className="object-fill" priority />
+          {/* FIXED: Changed object-fill to object-cover to prevent the image from looking stretched */}
+          <Image src={imageSrc} alt={projectTitle} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" priority />
         </div>
       ) : (
         <div className="z-10 text-center px-4 font-mono">
@@ -81,7 +83,8 @@ export function ProjectCard({ project, index }: { project: typeof projectsData[0
       <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l" style={{ borderColor: 'rgba(255, 255, 255, 0.5)' }} />
       <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r" style={{ borderColor: 'rgba(255, 255, 255, 0.5)' }} />
 
-      <motion.div animate={{ x: coords.x, y: coords.y }} transition={{ type: 'spring', stiffness: 220, damping: 28 }} className="flex flex-col justify-between h-full w-full aspect-[3/4.5]">
+      {/* FIXED: Removed aspect-[3/4.5] from this wrapper, as it fought against items-stretch in the parent grid layout */}
+      <motion.div animate={{ x: coords.x, y: coords.y }} transition={{ type: 'spring', stiffness: 220, damping: 28 }} className="flex flex-col justify-between h-full w-full">
         <div>
           <ProjectImagePlaceholder isHovered={isHovered} imageSrc={project.image || null} projectTitle={project.title} />
 
@@ -155,7 +158,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="py-24 relative overflow-hidden select-none px-[50px] flex justify-center w-full"
+      className="py-24 relative overflow-hidden select-none px-4 md:px-[50px] flex justify-center w-full"
       style={{
         backgroundColor: '#0A0A0A',
         borderTop: '2px solid rgba(255, 255, 255, 0.15)'

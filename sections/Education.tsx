@@ -45,7 +45,7 @@ export function EducationInternship() {
     return (
         <section
             id="education"
-            className="py-24 relative block select-none px-[50px] w-full min-h-screen"
+            className="relative w-screen h-screen bg-brand-bg flex items-center overflow-hidden"
             style={{
                 backgroundColor: '#0A0A0A',
                 borderTop: '2px solid rgba(255, 255, 255, 0.08)',
