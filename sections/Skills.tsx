@@ -18,14 +18,14 @@ export function Skills() {
   const groupedModules = skillsData.reduce((acc, skill) => {
     const rawCategory = skill.category || 'devops';
     const mappedTitle = categoryTitleMap[rawCategory] || 'SYSTEM CORE';
-    
+
     let existingModule = acc.find((m) => m.title === mappedTitle);
-    
+
     if (!existingModule) {
       existingModule = { title: mappedTitle, skills: [] };
       acc.push(existingModule);
     }
-    
+
     existingModule.skills.push(skill.name);
     return acc;
   }, [] as { title: string; skills: string[] }[]);
@@ -39,13 +39,14 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="py-28 relative overflow-hidden select-none px-6 md:px-12 lg:px-[50px] flex justify-center w-full"
+      className="py-28 relative overflow-hidden select-none px-4 md:px-[50px] flex justify-center w-full"
       style={{
-        backgroundColor: '#0A0A0A', 
+        backgroundColor: '#0A0A0A',
         borderTop: '2px solid rgba(255, 255, 255, 0.12)',
       }}
     >
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .hud-panel-white-bold {
           position: relative;
           background: #141414; 
@@ -70,7 +71,7 @@ export function Skills() {
       `}} />
 
       <div className="w-full max-w-7xl mx-auto relative z-10 flex flex-col">
-        
+
         {/* Exact Replica of Header UI */}
         <div className="w-full flex justify-between items-baseline mb-4 border-b pb-2.5" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
           <span className="text-[18px] font-mono uppercase font-bold tracking-[0.35em]" style={{ color: '#A0A0A0' }}>
@@ -86,35 +87,40 @@ export function Skills() {
           CORE SYSTEMS
         </h2>
 
-        {/* Highly Spaced Dynamic Module Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+        {/* UPDATED: Applied horizontal swiping architecture matching projects layout logic */}
+        <div className="flex lg:grid lg:grid-cols-4 gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none w-full pb-8 lg:pb-0 scrollbar-thin scroll-smooth items-stretch">
           {displayModules.map((module, index) => (
-            <div key={index} className="hud-panel-white-bold p-7 flex flex-col justify-between min-h-[380px] rounded-none">
-              <div>
-                <div className="flex items-center justify-between mb-8">
-                  <div className="w-5 h-5 border flex items-center justify-center" style={{ borderColor: 'rgba(255, 255, 255, 0.25)', background: 'rgba(255, 255, 255, 0.02)' }}>
-                    <div className="w-1.5 h-1.5" style={{ backgroundColor: '#D00000' }} />
+            <div
+              key={index}
+              className="flex-shrink-0 lg:flex-shrink w-[85vw] sm:w-[350px] lg:w-full snap-center h-auto"
+            >
+              <div className="hud-panel-white-bold p-7 flex flex-col justify-between min-h-[380px] h-full rounded-none">
+                <div>
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="w-5 h-5 border flex items-center justify-center" style={{ borderColor: 'rgba(255, 255, 255, 0.25)', background: 'rgba(255, 255, 255, 0.02)' }}>
+                      <div className="w-1.5 h-1.5" style={{ backgroundColor: '#D00000' }} />
+                    </div>
+                    <span className="text-[9px] font-mono font-bold opacity-40" style={{ color: '#A0A0A0' }}>0{index + 1} // SYS</span>
                   </div>
-                  <span className="text-[9px] font-mono font-bold opacity-40" style={{ color: '#A0A0A0' }}>0{index + 1} // SYS</span>
+
+                  <h3 className="text-[13px] font-mono font-bold tracking-[0.15em] text-white mb-6 pb-2.5 border-b" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
+                    {module.title}
+                  </h3>
+
+                  <ul className="space-y-4">
+                    {module.skills.map((skill, sIdx) => (
+                      <li key={sIdx} className="text-[14px] font-mono flex items-center gap-3 transition-colors duration-200 cursor-default" style={{ color: '#A0A0A0' }}>
+                        <span className="w-1 h-1 shrink-0 rounded-full" style={{ backgroundColor: '#D00000' }} />
+                        <span className="hover:text-white transition-colors truncate">{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <h3 className="text-[13px] font-mono font-bold tracking-[0.15em] text-white mb-6 pb-2.5 border-b" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
-                  {module.title}
-                </h3>
-
-                <ul className="space-y-4">
-                  {module.skills.map((skill, sIdx) => (
-                    <li key={sIdx} className="text-[14px] font-mono flex items-center gap-3 transition-colors duration-200 cursor-default" style={{ color: '#A0A0A0' }}>
-                      <span className="w-1 h-1 shrink-0 rounded-full" style={{ backgroundColor: '#D00000' }} />
-                      <span className="hover:text-white transition-colors truncate">{skill}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-8 pt-3.5 flex justify-between items-center text-[9px] font-mono border-t" style={{ borderColor: 'rgba(255, 255, 255, 0.06)', color: 'rgba(255, 255, 255, 0.2)' }}>
-                <span>SYS_VER_6.2</span>
-                <span>STATUS_OK</span>
+                <div className="mt-8 pt-3.5 flex justify-between items-center text-[9px] font-mono border-t" style={{ borderColor: 'rgba(255, 255, 255, 0.06)', color: 'rgba(255, 255, 255, 0.2)' }}>
+                  <span>SYS_VER_6.2</span>
+                  <span>STATUS_OK</span>
+                </div>
               </div>
             </div>
           ))}

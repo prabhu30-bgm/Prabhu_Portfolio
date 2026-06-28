@@ -21,7 +21,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-black border-t border-white/5 w-full py-16 md:py-24 relative overflow-hidden">
+    // Change this line inside your contact.jsx:
+    <footer id="contact" className="relative w-screen min-h-screen bg-brand-bg flex items-center py-20 lg:py-0 overflow-x-hidden">
       <div className="container mx-auto px-6 md:px-12 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-white/5">
           <div className="flex flex-col gap-4">
@@ -166,6 +167,6 @@ export function Footer() {
           </button>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 }

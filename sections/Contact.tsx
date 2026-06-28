@@ -56,7 +56,7 @@ export function Contact() {
     }
 
     return (
-        <section id="contact" className="relative w-screen h-screen bg-brand-bg flex items-center overflow-hidden">
+        <section id="contact" className="relative w-screen min-h-screen bg-brand-bg flex items-center py-20 lg:py-0 overflow-x-hidden">
             <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-accentNeon/3 rounded-full blur-[130px] pointer-events-none" />
             <div className="container mx-auto px-6 md:px-12 max-w-7xl relative z-10">
                 <div className="max-w-3xl mb-20">

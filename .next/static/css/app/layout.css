@@ -928,6 +928,9 @@ video {
 .visible {
   visibility: visible;
 }
+.static {
+  position: static;
+}
 .fixed {
   position: fixed;
 }
@@ -1141,6 +1144,9 @@ video {
 .h-10 {
   height: 2.5rem;
 }
+.h-16 {
+  height: 4rem;
+}
 .h-2\.5 {
   height: 0.625rem;
 }
@@ -1191,9 +1197,6 @@ video {
 }
 .h-screen {
   height: 100vh;
-}
-.h-16 {
-  height: 4rem;
 }
 .max-h-\[38vh\] {
   max-height: 38vh;
@@ -1255,6 +1258,9 @@ video {
 .w-\[600px\] {
   width: 600px;
 }
+.w-\[85vw\] {
+  width: 85vw;
+}
 .w-\[88vw\] {
   width: 88vw;
 }
@@ -1270,6 +1276,9 @@ video {
 }
 .w-screen {
   width: 100vw;
+}
+.w-\[100\%\] {
+  width: 100%;
 }
 .max-w-2xl {
   max-width: 42rem;
@@ -1525,11 +1534,11 @@ video {
 .border {
   border-width: 1px;
 }
-.border-\[3px\] {
-  border-width: 3px;
-}
 .border-2 {
   border-width: 2px;
+}
+.border-\[3px\] {
+  border-width: 3px;
 }
 .border-b {
   border-bottom-width: 1px;
@@ -1543,17 +1552,18 @@ video {
 .border-t {
   border-top-width: 1px;
 }
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
+}
 .border-brand-accent {
   border-color: var(--color-brand-accent);
 }
 .border-brand-border {
   border-color: var(--color-brand-border);
 }
-.border-green-500\/30 {
-  border-color: rgb(34 197 94 / 0.3);
-}
-.border-red-500\/30 {
-  border-color: rgb(239 68 68 / 0.3);
+.border-red-500\/50 {
+  border-color: rgb(239 68 68 / 0.5);
 }
 .border-white\/10 {
   border-color: rgb(255 255 255 / 0.1);
@@ -1569,13 +1579,6 @@ video {
 }
 .border-white\/60 {
   border-color: rgb(255 255 255 / 0.6);
-}
-.border-black {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
-}
-.border-red-500\/50 {
-  border-color: rgb(239 68 68 / 0.5);
 }
 .border-t-transparent {
   border-top-color: transparent;
@@ -1616,12 +1619,6 @@ video {
 }
 .bg-darkBg {
   background-color: var(--color-brand-bg);
-}
-.bg-green-500\/10 {
-  background-color: rgb(34 197 94 / 0.1);
-}
-.bg-red-500\/10 {
-  background-color: rgb(239 68 68 / 0.1);
 }
 .bg-transparent {
   background-color: transparent;
@@ -1740,6 +1737,10 @@ video {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -1747,6 +1748,10 @@ video {
 .py-2\.5 {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
+}
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 .py-24 {
   padding-top: 6rem;
@@ -1763,10 +1768,6 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
 .pb-12 {
   padding-bottom: 3rem;
@@ -1965,10 +1966,6 @@ video {
 }
 .text-brand-text-sec {
   color: var(--color-brand-text-sec);
-}
-.text-green-400 {
-  --tw-text-opacity: 1;
-  color: rgb(74 222 128 / var(--tw-text-opacity, 1));
 }
 .text-lightText {
   --tw-text-opacity: 1;
@@ -2350,6 +2347,10 @@ html.lenis {
     height: 400px;
   }
 
+  .sm\:w-\[350px\] {
+    width: 350px;
+  }
+
   .sm\:w-\[450px\] {
     width: 450px;
   }
@@ -2415,10 +2416,6 @@ html.lenis {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .md\:flex-row {
@@ -2514,6 +2511,10 @@ html.lenis {
     grid-column: span 7 / span 7;
   }
 
+  .lg\:grid {
+    display: grid;
+  }
+
   .lg\:h-\[480px\] {
     height: 480px;
   }
@@ -2534,6 +2535,18 @@ html.lenis {
     width: 480px;
   }
 
+  .lg\:w-full {
+    width: 100%;
+  }
+
+  .lg\:flex-shrink {
+    flex-shrink: 1;
+  }
+
+  .lg\:snap-none {
+    scroll-snap-type: none;
+  }
+
   .lg\:grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
@@ -2542,22 +2555,21 @@ html.lenis {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .lg\:gap-20 {
     gap: 5rem;
   }
 
-  .lg\:overflow-hidden {
-    overflow: hidden;
+  .lg\:overflow-visible {
+    overflow: visible;
   }
 
   .lg\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
-  }
-
-  .lg\:px-\[50px\] {
-    padding-left: 50px;
-    padding-right: 50px;
   }
 
   .lg\:py-0 {
@@ -2568,6 +2580,10 @@ html.lenis {
   .lg\:py-32 {
     padding-top: 8rem;
     padding-bottom: 8rem;
+  }
+
+  .lg\:pb-0 {
+    padding-bottom: 0px;
   }
 
   .lg\:text-5xl {
