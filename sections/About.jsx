@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import ironman2 from '@/assets/ironman2.png';
-import prabhu from '@/assets/prabhu.jpg';
+import prabhu from '@/assets/prabhu.JPG';
 
 export function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
