@@ -49,7 +49,7 @@ export function useForm(initialState, onSubmit) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formErrors = {};
@@ -67,7 +67,14 @@ export function useForm(initialState, onSubmit) {
 
     if (!hasError) {
       setIsSubmitting(true);
-      onSubmit(values);
+      try {
+        await Promise.resolve(onSubmit(values));
+      } catch (error) {
+        // Event-shaped browser failures (for example, a network abort) must not
+        // escape React's submit handler as an unhandled promise rejection.
+        console.error('Form submission failed:', error);
+        setIsSubmitting(false);
+      }
     }
   };
 

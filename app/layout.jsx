@@ -37,14 +37,14 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: '#050505',
+  themeColor: '#0A0A0A',
   width: 'device-width',
   initialScale: 1,
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${plusJakartaSans.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <body className="bg-darkBg text-lightText font-sans selection:bg-accentNeon/30 selection:text-white antialiased overflow-x-hidden">
         {children}
       </body>

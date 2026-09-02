@@ -1,12 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 
 import { CursorGlow } from '@/components/CursorGlow';
 import { Navbar } from '@/components/Navbar';
-import { PageLoader } from '@/components/PageLoader';
 
 import { Hero } from '@/sections/Hero';
 import { About } from '@/sections/About';
@@ -14,14 +12,9 @@ import { EducationInternship } from '@/sections/Education';
 import { Skills } from '@/sections/Skills';
 import { Projects } from '@/sections/Projects';
 import { Contact } from '@/sections/Contact';
-import { Footer } from '@/sections/Footer';
 
 export default function Home() {
-    const [isLoading, setIsLoading] = useState(true);
-
     useEffect(() => {
-        if (isLoading) return;
-
         // Initialize Lenis Smooth Scroll
         const lenis = new Lenis({
             duration: 1.2,
@@ -57,37 +50,27 @@ export default function Home() {
             lenis.destroy();
             window.removeEventListener('scroll', updateProgress);
         };
-    }, [isLoading]);
+    }, []);
 
     return (
-        <>
-            <AnimatePresence mode="wait">
-                {isLoading && <PageLoader onComplete={() => setIsLoading(false)} />}
-            </AnimatePresence>
+        <div className="relative min-h-screen bg-darkBg text-white overflow-x-hidden selection:bg-accentNeon/30 selection:text-white">
+            <div
+                id="scroll-progress-bar"
+                className="scroll-progress"
+                style={{ transform: 'scaleX(0)' }}
+            />
 
-            {!isLoading && (
-                <div className="relative min-h-screen bg-darkBg text-white overflow-x-hidden selection:bg-accentNeon/30 selection:text-white">
-                    <div
-                        id="scroll-progress-bar"
-                        className="scroll-progress"
-                        style={{ transform: 'scaleX(0)' }}
-                    />
+            <CursorGlow />
+            <Navbar />
 
-                    <CursorGlow />
-                    <Navbar />
-
-                    <main>
-                        <Hero />
-                        <About />
-                        <EducationInternship />
-                        <Skills />
-                        <Projects />
-                        <Contact />
-                    </main>
-
-                    <Footer />
-                </div>
-            )}
-        </>
+            <main>
+                <Hero />
+                <About />
+                <Skills />
+                <Projects />
+                <EducationInternship />
+                <Contact />
+            </main>
+        </div>
     );
 }

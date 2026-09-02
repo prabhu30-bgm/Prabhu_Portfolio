@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { AlertCircle, CheckCircle2, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { AlertCircle, ArrowUp, CheckCircle2, Mail, MapPin, Phone, Send } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import emailjs from '@emailjs/browser';
 import { useForm } from '@/hooks/useForm';
@@ -162,6 +162,23 @@ export function Contact() {
                             </AnimatePresence>
                         </div>
                     </div>
+                </div>
+
+                {/* Bottom Copyright & Back to Top Bar */}
+                <div className="mt-20 border-t border-white/10 pt-8 flex flex-col items-center justify-between gap-4 text-xs font-semibold uppercase tracking-wider text-neutral-400 sm:flex-row">
+                    <span>{profile.fullName} © 2026. ALL RIGHTS RESERVED.</span>
+
+                    <button
+                        type="button"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="flex items-center gap-1.5 text-neutral-300 hover:text-yellow-400 transition-colors group cursor-pointer"
+                    >
+                        Back to top
+                        <ArrowUp
+                            size={14}
+                            className="group-hover:-translate-y-0.5 transition-transform"
+                        />
+                    </button>
                 </div>
             </div>
         </section>

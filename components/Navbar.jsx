@@ -20,7 +20,7 @@ export function Navbar() {
     { label: 'SYSTEMS', id: 'skills' },
     { label: 'LABS', id: 'projects' },
     { label: 'UPGRADES', id: 'education' },
-    { label: 'SECURE_UPLINK', id: 'contact' },
+    { label: 'SECURE_LINK', id: 'contact' },
   ];
 
   const scrollToId = (id) => {
@@ -79,24 +79,39 @@ export function Navbar() {
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
         className="fixed top-6 left-0 right-0 z-50 px-4 md:px-8 max-w-7xl mx-auto"
       >
         <div className="glass-nav rounded-[20px] px-6 py-4 flex items-center justify-between shadow-cardGlow max-w-5xl mx-auto">
 
-          {/* CHANGED: Text removed. Integrated Next.js Image component wrapper */}
+          {/* Integrated morphing SVG drawing logo */}
           <button
             type="button"
             onClick={() => scrollToId('home')}
-            className="flex items-center justify-center transition-transform active:scale-95 cursor-pointer relative w-8 h-8 rounded-full overflow-hidden group"
+            className="flex items-center justify-center transition-transform active:scale-95 cursor-pointer relative w-8 h-8 group"
           >
             {/* Pulsing glow ring calibrated to the new smaller circular profile */}
-            <span className="absolute inset-0 rounded-full bg-accentNeon/28 animate-ping pointer-events-none group-hover:bg-accentNeon/40 transition-colors" />
+            <span className="absolute inset-0 rounded-full bg-accentNeon/20 animate-ping pointer-events-none group-hover:bg-accentNeon/30 transition-colors" />
 
-            {/* Clean, high-contrast BK text centered inside the pulse */}
-            <span className="font-sans font-black text-[26px] tracking-[0.12em] pl-[0.15em] text-white uppercase group-hover:text-accentNeon transition-colors duration-300">
-              BK
-            </span>
+            <motion.div
+              layoutId="main-logo-container"
+              className="relative w-8 h-8 flex items-center justify-center z-10"
+            >
+              <motion.svg
+                viewBox="0 0 100 100"
+                className="w-5.5 h-5.5 text-white group-hover:text-accentNeon transition-colors duration-300"
+              >
+                <motion.path
+                  layoutId="main-logo-path"
+                  d="M 25 80 L 25 20 C 40 20, 40 45, 25 45 C 45 45, 45 80, 25 80 M 55 20 L 55 80 M 75 20 L 55 50 L 75 80"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </motion.svg>
+            </motion.div>
           </button>
 
           <div
@@ -129,7 +144,7 @@ export function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="activeUnderline"
-                      className="absolute bottom-0 left-4 right-4 h-[2px] bg-accentNeon shadow-[0_0_8px_rgba(255,26,26,0.6)]"
+                      className="absolute bottom-0 left-4 right-4 h-[2px] bg-yellow-400 shadow-[0_0_10px_#facc15]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -144,7 +159,7 @@ export function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToId('contact')}
-              className="bg-white text-black text-xs font-semibold uppercase tracking-wider px-5 py-2.5 rounded-full hover:bg-accentNeon hover:text-black transition-all duration-300 shadow-glow flex items-center gap-1.5 cursor-pointer"
+              className="bg-yellow-400 text-black text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(250,204,21,0.5)] flex items-center gap-1.5 cursor-pointer"
             >
               Hire Me <ArrowUpRight size={14} />
             </motion.button>
@@ -231,7 +246,7 @@ export function Navbar() {
                 type="button"
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToId('contact')}
-                className="w-full max-w-[200px] mt-4 bg-accentNeon text-black text-xs font-semibold uppercase tracking-wider py-3.5 rounded-full transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-glow"
+                className="w-full max-w-[200px] mt-4 bg-yellow-400 text-black text-xs font-bold uppercase tracking-wider py-3.5 rounded-full transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-[0_0_15px_rgba(250,204,21,0.5)]"
               >
                 Hire Me <ArrowUpRight size={14} />
               </motion.button>

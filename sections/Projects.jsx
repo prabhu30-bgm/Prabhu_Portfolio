@@ -3,143 +3,107 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-
-// Fetches variables directly from your local portfolio data file
 import { projectsData, profile } from '../constants/portfolioData';
 
-export function PrototypeButton() {
-  return (
-    <motion.button
-      whileHover={{ scale: 1.01, borderColor: '#FFFFFF', color: '#ffffff' }}
-      whileTap={{ scale: 0.99 }}
-      className="border bg-transparent text-[10px] tracking-[0.25em] font-mono font-bold py-3.5 px-7 uppercase flex items-center gap-2 cursor-pointer transition-all duration-300 rounded-none relative overflow-hidden"
-      style={{ borderColor: 'rgba(255, 255, 255, 0.25)', color: '#A0A0A0' }}
-    >
-      <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white/60" />
-      <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white/60" />
-      <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white/60" />
-      <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white/60" />
-      VIEW ALL PROTOTYPES &gt;
-    </motion.button>
-  );
-}
-
-export function ProjectImagePlaceholder({ isHovered, imageSrc, projectTitle }) {
-  return (
-    <div className="relative w-full aspect-video border bg-black/40 overflow-hidden flex flex-col items-center justify-center select-none transition-colors duration-300" style={{ borderColor: 'rgba(255, 255, 255, 0.15)' }}>
-      {imageSrc ? (
-        <div className="absolute inset-0 w-full h-full transition-all duration-700 group-hover:scale-[1.02] p-2">
-          <Image src={imageSrc} alt={projectTitle} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" priority />
-        </div>
-      ) : (
-        <div className="z-10 text-center px-4 font-mono">
-          <p className="text-[10px] tracking-widest uppercase font-bold text-white/80 mb-0.5">IMAGE BOX</p>
-          <p className="text-[8px] tracking-wider opacity-40" style={{ color: '#A0A0A0' }}>(PROJECT PREVIEW)</p>
-        </div>
-      )}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
-    </div>
-  );
-}
-
-export function ProjectCard({ project, index }) {
+function ProjectCard({ project, index }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e) => {
-    setIsHovered(true);
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left - rect.width / 2) / rect.width) * 5;
-    const y = ((e.clientY - rect.top - rect.height / 2) / rect.height) * 5;
-    setCoords({ x, y });
+  const getStatus = () => {
+    if (index === 0) return 'ACTIVE_DEV';
+    return 'DEPLOYED_SYS';
   };
 
-  const mkNumberDesignation = `MK - ${['I', 'II', 'III', 'IV', 'V'][index] || 'X'}`;
+  const getMark = () => {
+    if (index === 0) return 'MK - I';
+    if (index === 1) return 'MK - II';
+    return 'MK - III';
+  };
 
   return (
     <motion.div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => { setIsHovered(false); setCoords({ x: 0, y: 0 }); }}
-      className="relative p-8 flex flex-col justify-between cursor-pointer select-none rounded-none transition-all duration-500 ease-out h-full w-full group"
-      style={{
-        background: '#141414',
-        borderColor: 'rgba(255, 255, 255, 0.25)',
-        borderWidth: '2px',
-        boxShadow: isHovered ? '0 20px 45px rgba(255, 255, 255, 0.04)' : 'none',
-        transform: isHovered ? 'translateY(-6px)' : 'none'
-      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+      className="group relative hud-panel-white-bold p-7 flex flex-col justify-between min-h-[580px] h-full rounded-none"
     >
-      <div className="absolute top-0 left-0 w-3 h-3 border-t border-l" style={{ borderColor: 'rgba(255, 255, 255, 0.5)' }} />
-      <div className="absolute top-0 right-0 w-3 h-3 border-t border-r" style={{ borderColor: 'rgba(255, 255, 255, 0.5)' }} />
-      <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l" style={{ borderColor: 'rgba(255, 255, 255, 0.5)' }} />
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r" style={{ borderColor: 'rgba(255, 255, 255, 0.5)' }} />
+      {/* Corner L-Ticks for Sci-fi/Cyber design */}
+      <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400" />
+      <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400" />
+      <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400" />
+      <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400" />
 
-      <motion.div animate={{ x: coords.x, y: coords.y }} transition={{ type: 'spring', stiffness: 220, damping: 28 }} className="flex flex-col justify-between h-full w-full">
-        <div>
-          <ProjectImagePlaceholder isHovered={isHovered} imageSrc={project.image || null} projectTitle={project.title} />
-
-          <div className="flex flex-col text-left mt-8 font-mono">
-            <span className="text-xs font-bold tracking-[0.2em] block" style={{ color: '#D00000' }}>
-              {mkNumberDesignation}
-            </span>
-            <h3 className="text-lg md:text-xl font-bold text-white uppercase tracking-wide leading-snug truncate mt-1.5">{project.title}</h3>
-            <p className="text-[13px] leading-relaxed tracking-wide font-sans mt-3" style={{ color: '#A0A0A0' }}>{project.description}</p>
-
-            {project.tags && project.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="text-[9px] border border-white/10 px-2 py-0.5 text-white/50 tracking-wider uppercase">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+      <div className="space-y-6">
+        {/* Project Image */}
+        <div className="relative w-full aspect-video overflow-hidden rounded-none border border-white/10 bg-brand-card">
+          {project.image && (
+            <div className="absolute inset-0 w-full h-full transition-all duration-700 group-hover:scale-[1.02]">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover"
+                priority={index === 0}
+              />
+            </div>
+          )}
         </div>
 
-        <div className="mt-8">
-          <div className="grid grid-cols-2 gap-4 mb-5 font-mono">
-            <style dangerouslySetInnerHTML={{
-              __html: `
-              .hud-btn-action {
-                position: relative;
-                text-align: center;
-                padding-top: 0.65rem;
-                padding-bottom: 0.65rem;
-                font-size: 11px;
-                font-weight: 700;
-                letter-spacing: 0.05em;
-                text-transform: uppercase;
-                border: 2px solid rgba(255, 255, 255, 0.25);
-                color: #FFFFFF;
-                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-              }
-              .hud-btn-action:hover {
-                border-color: #FF1A1A;
-                color: #FF1A1A;
-                box-shadow: 0 0 12px rgba(255, 26, 26, 0.2);
-              }
-            `}} />
+        <div className="space-y-4">
+          {/* MK identifier */}
+          <span className="block text-[10px] font-mono font-bold tracking-[0.2em] text-yellow-400">
+            {getMark()}
+          </span>
 
-            <a href={project.liveUrl || '#'} className="hud-btn-action flex items-center justify-center gap-1.5">
-              <div className="absolute top-0 left-0 w-1 h-1 border-t border-l border-white/30" />
-              LIVE DEMO <span className="text-[12px] leading-none transform translate-y-[-0.5px]">↗</span>
-            </a>
+          <h3 className="text-[16px] font-mono font-bold tracking-wide text-white uppercase">{project.title}</h3>
 
-            <a href={project.githubUrl || '#'} className="hud-btn-action flex items-center justify-center">
-              <div className="absolute top-0 left-0 w-1 h-1 border-t border-l border-white/30" />
-              GITHUB
-            </a>
-          </div>
+          <p className="text-[13px] leading-relaxed text-neutral-300 min-h-[80px]">{project.description}</p>
 
-          <div className="w-full h-[1px]" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }} />
-          <div className="text-[10px] font-bold tracking-[0.2em] mt-3 font-mono">
-            <span style={{ color: isHovered ? '#FFFFFF' : '#A0A0A0' }}>
-              STATUS // {project.period && project.period.includes('Present') ? 'ACTIVE_DEV' : 'DEPLOYED_SYS'}
-            </span>
-          </div>
+          {/* Tech Stack tags */}
+          {project.tags && project.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 pt-2">
+              {project.tags.map((tag) => (
+                <span key={tag} className="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
-      </motion.div>
+      </div>
+
+      {/* Action Buttons & Status */}
+      <div className="space-y-6 mt-8">
+        <div className="flex gap-4">
+          <motion.a
+            href={project.liveUrl || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="border border-white/10 bg-white/5 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white hover:bg-accentNeon hover:text-black hover:border-yellow-400 transition-all duration-300 rounded-none cursor-pointer flex-1 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+          >
+            LIVE DEMO ↗
+          </motion.a>
+          <motion.a
+            href={project.githubUrl || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="border border-white/10 bg-white/5 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white hover:bg-accentNeon hover:text-black hover:border-yellow-400 transition-all duration-300 rounded-none cursor-pointer flex-1 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+          >
+            GITHUB
+          </motion.a>
+        </div>
+
+        <div className="flex items-center justify-between border-t border-white/10 pt-4 text-[9px] font-mono tracking-wider text-neutral-500 uppercase">
+          <span>STATUS // {getStatus()}</span>
+        </div>
+      </div>
     </motion.div>
   );
 }
@@ -148,33 +112,42 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="py-24 relative overflow-hidden select-none px-4 md:px-[50px] flex justify-center w-full"
-      style={{
-        backgroundColor: '#0A0A0A',
-        borderTop: '2px solid rgba(255, 255, 255, 0.15)'
-      }}
+      className="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 px-6 py-24 md:px-10 lg:px-12 md:py-28"
     >
-      <div className="w-full max-w-7xl mx-auto relative z-10 flex flex-col">
+      <div className="absolute left-[-6rem] top-[-6rem] h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-12 left-12 h-20 w-20 rounded-full border border-white/5 pointer-events-none" />
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 relative">
-          <div className="flex flex-col items-start text-left font-mono">
-            <span className="text-[10px] tracking-[0.25em] font-bold block" style={{ color: '#D00000' }}>INNOVATION LAB</span>
-            <h2 className="text-3xl font-black text-white uppercase tracking-wider mt-3 leading-tight">
-              PROTOTYPE LABORATORY
-            </h2>
-          </div>
-
-          <div className="flex shrink-0 self-start md:self-auto">
-            <a href={profile?.github || '#'} target="_blank" rel="noopener noreferrer">
-              <PrototypeButton />
-            </a>
-          </div>
+      <div className="relative z-10 flex w-full max-w-7xl flex-col">
+        {/* Info Header Row */}
+        <div className="w-full flex justify-between items-baseline mb-4 border-b pb-2.5 border-red-400/30">
+          <span className="text-[16px] sm:text-[18px] font-mono uppercase font-bold tracking-[0.35em] text-yellow-400">
+            INNOVATION LAB
+          </span>
+          <motion.a
+            href={profile?.github || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative rounded-none border border-red-400/40 px-5 py-3 text-[10px] font-mono font-bold tracking-[0.2em] text-white hover:border-yellow-400 hover:bg-[#ff1e27] transition duration-300 bg-black/35 flex items-center justify-center shrink-0 shadow-[0_4px_15px_rgba(0,0,0,0.3)]"
+          >
+            {/* Corner ticks */}
+            <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-yellow-400" />
+            <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-yellow-400" />
+            <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-yellow-400" />
+            <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-yellow-400" />
+            VIEW ALL PROTOTYPES &gt;
+          </motion.a>
         </div>
 
-        {/* UPDATED: Hybrid structural wrapper allows 1-by-1 horizontal swipe mechanics on mobile layouts, converts to static fit grid layout on desktop layouts */}
-        <div className="flex lg:grid lg:grid-cols-3 gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none w-full pb-8 lg:pb-0 scrollbar-thin scroll-smooth items-stretch">
+        {/* Scaled Up Bold Structural Header */}
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-widest text-white uppercase mb-12 font-mono">
+          PROTOTYPE LABORATORY
+        </h2>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {projectsData?.map((project, idx) => (
-            <div key={project.id} className="flex-shrink-0 lg:flex-shrink w-[100%] sm:w-[450px] lg:w-full snap-center h-auto">
+            <div key={project.id} className="h-full">
               <ProjectCard project={project} index={idx} />
             </div>
           ))}

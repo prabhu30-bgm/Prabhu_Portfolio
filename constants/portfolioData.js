@@ -111,8 +111,8 @@ export const skillsData = [
 export const projectsData = [
   {
     id: 'proj-1',
-    title: 'TheSaviour (Ongoing)',
-    period: 'Apr 2026 - Present',
+    title: 'TheSaviour',
+    period: 'Apr 2026 - July 2026',
     description:
       'Developing a community-based disaster support platform to provide quick assistance during emergencies. Features include user authentication, priority-based help requests, food and medicine support, and emergency assistance tracking.',
     image: '/assets/Saviour.png',
@@ -132,17 +132,5 @@ export const projectsData = [
     githubUrl: profile.bms,
     liveUrl: '',
     featured: true,
-  },
-  {
-    id: 'proj-3',
-    title: 'Pixabay Image Gallery',
-    period: '',
-    description:
-      'Developed a MERN-based image gallery application using external API integration. Fetched and displayed images dynamically from the Pixabay API while improving API handling and React component structure.',
-    image: '/assets/Pixable.png',
-    tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'MERN Stack'],
-    githubUrl: profile.pixable,
-    liveUrl: '',
-    featured: false,
   },
 ];
