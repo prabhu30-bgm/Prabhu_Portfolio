@@ -42,7 +42,7 @@ export function EducationInternship() {
     return (
         <section
             id="education"
-            className="relative w-full bg-brand-bg overflow-hidden border-t border-white/5 py-24 md:py-28"
+            className="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28"
         >
             <div className="absolute right-[-6rem] top-[-6rem] h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[130px] pointer-events-none" />
             <div className="absolute top-12 left-12 h-20 w-20 rounded-full border border-white/5 pointer-events-none" />

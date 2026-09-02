@@ -264,28 +264,29 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 px-4 py-20 md:px-8 md:py-24"
+      className="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28"
     >
       {/* Background ambient lighting */}
       <div className="absolute left-[-6rem] top-1/3 h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[140px] pointer-events-none" />
       <div className="absolute right-[-6rem] bottom-10 h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[140px] pointer-events-none" />
 
-      <div className="relative z-10 flex w-full max-w-6xl flex-col items-center">
-        {/* Main Section Header */}
-        <div className="text-center mb-8">
-          <div className="inline-block relative">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-              Core Systems
-            </h2>
-            <div className="w-12 h-1 bg-yellow-400 mx-auto mt-2 rounded-full shadow-[0_0_10px_#facc15]" />
-          </div>
-          <p className="mt-4 text-xs sm:text-sm text-neutral-400 max-w-md mx-auto font-medium">
-            A list of my favorite tools and technologies that I use on a regular basis.
-          </p>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12 flex flex-col items-start">
+        {/* Section Header */}
+        <div className="mb-3 flex w-full items-baseline justify-between">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+            Skills
+          </span>
+          <span className="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-neutral-400 sm:block">
+            Tech Arsenal
+          </span>
         </div>
 
+        <h2 className="mb-6 block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
+          CORE SYSTEMS
+        </h2>
+
         {/* Filter Category Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8 w-full">
+        <div className="flex flex-wrap items-center justify-start gap-2 mb-8 w-full">
           {categoryTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -342,7 +343,7 @@ export function Skills() {
         </motion.div>
 
         {/* Bottom indicator */}
-        <div className="mt-8 text-center text-xs font-mono text-red-200/50">
+        <div className="mt-8 text-left text-xs font-mono text-neutral-500 w-full">
           Showing {filteredItems.length} technologies
         </div>
       </div>

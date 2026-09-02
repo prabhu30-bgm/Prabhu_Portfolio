@@ -112,16 +112,16 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 px-6 py-24 md:px-10 lg:px-12 md:py-28"
+      className="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28"
     >
       <div className="absolute left-[-6rem] top-[-6rem] h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[140px] pointer-events-none" />
       <div className="absolute bottom-12 left-12 h-20 w-20 rounded-full border border-white/5 pointer-events-none" />
 
-      <div className="relative z-10 flex w-full max-w-7xl flex-col">
-        {/* Info Header Row */}
-        <div className="w-full flex justify-between items-baseline mb-4 border-b pb-2.5 border-red-400/30">
-          <span className="text-[16px] sm:text-[18px] font-mono uppercase font-bold tracking-[0.35em] text-yellow-400">
-            INNOVATION LAB
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12 flex flex-col">
+        {/* Section Header */}
+        <div className="mb-3 flex w-full items-baseline justify-between">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+            Innovation Lab
           </span>
           <motion.a
             href={profile?.github || '#'}
@@ -129,19 +129,13 @@ export function Projects() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="relative rounded-none border border-red-400/40 px-5 py-3 text-[10px] font-mono font-bold tracking-[0.2em] text-white hover:border-yellow-400 hover:bg-[#ff1e27] transition duration-300 bg-black/35 flex items-center justify-center shrink-0 shadow-[0_4px_15px_rgba(0,0,0,0.3)]"
+            className="text-[10px] font-semibold tracking-[0.25em] text-neutral-400 hover:text-yellow-400 uppercase transition-colors"
           >
-            {/* Corner ticks */}
-            <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-yellow-400" />
-            <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-yellow-400" />
-            <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-yellow-400" />
-            <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-yellow-400" />
             VIEW ALL PROTOTYPES &gt;
           </motion.a>
         </div>
 
-        {/* Scaled Up Bold Structural Header */}
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-widest text-white uppercase mb-12 font-mono">
+        <h2 className="mb-10 block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
           PROTOTYPE LABORATORY
         </h2>
 

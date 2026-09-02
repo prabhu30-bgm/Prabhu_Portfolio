@@ -38,15 +38,23 @@ export function About() {
     <>
       <section
         id="about"
-        className="relative flex min-h-screen w-full items-center bg-brand-bg overflow-hidden py-20 md:py-24 lg:py-0"
+        className="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28"
       >
-        <div className="absolute left-[-6rem] top-1/4 h-[28rem] w-[28rem] rounded-full bg-accentNeon/5 blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-8 right-8 h-24 w-24 rounded-full border border-white/5 pointer-events-none" />
-        <div className="absolute left-12 top-12 h-16 w-16 rounded-full border border-white/5 pointer-events-none" />
-
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12 relative z-10">
-          <div className="mb-16 text-left">
-            <h2 className="text-3xl font-black uppercase tracking-[0.2em] text-yellow-400 sm:text-4xl">OPERATOR</h2>
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12">
+          {/* Background decorations bounded to container */}
+          <div className="absolute left-[-2rem] top-1/4 h-[22rem] w-[22rem] rounded-full bg-accentNeon/5 blur-[120px] pointer-events-none" />
+          <div className="mb-14">
+            <div className="mb-3 flex w-full items-baseline justify-between">
+              <span className="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+                About
+              </span>
+              <span className="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-neutral-400 sm:block">
+                Biography
+              </span>
+            </div>
+            <h2 className="block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
+              OPERATOR
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-20">

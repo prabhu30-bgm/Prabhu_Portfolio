@@ -68,13 +68,21 @@ export function Contact() {
     }
 
     return (
-        <section id="contact" className="relative w-screen min-h-screen bg-brand-bg flex items-center py-20 lg:py-0 overflow-x-hidden">
+        <section id="contact" className="relative flex w-full justify-center items-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28">
             <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-accentNeon/3 rounded-full blur-[130px] pointer-events-none" />
-            <div className="container mx-auto px-6 md:px-12 max-w-7xl relative z-10">
-                <div className="max-w-3xl mb-20">
-                    <span className="text-accentNeon text-xs font-semibold uppercase tracking-widest">Connect</span>
-                    <h2 className="text-3xl md:text-5xl font-bold font-display text-white mt-3 uppercase">Start A Conversation</h2>
-                    <div className="w-16 h-[2px] bg-accentNeon mt-6" />
+            <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12">
+                <div className="mb-14">
+                    <div className="mb-3 flex w-full items-baseline justify-between">
+                        <span className="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+                            Connect
+                        </span>
+                        <span className="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-neutral-400 sm:block">
+                            Get In Touch
+                        </span>
+                    </div>
+                    <h2 className="block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
+                        START A CONVERSATION
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
