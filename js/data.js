@@ -1,4 +1,6 @@
-export const profile = {
+// Portfolio Data & Constants
+
+const profile = {
   fullName: 'Basavaprabhu Kudenatti',
   displayName: 'Basavaprabhu S K',
   title: 'Full Stack MERN Developer',
@@ -11,17 +13,24 @@ export const profile = {
   email: 'basavaprabhukudenatti@gmail.com',
   phone: '+91 9972920779',
   phoneHref: 'tel:+919972920779',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: './assets/resume.pdf',
   github: 'https://github.com/prabhu30-bgm/',
-  pixable: "https://github.com/prabhu30-bgm/Pixable-API",
-  bms: "https://github.com/prabhu30-bgm/Public-Transport-Management-Platform",
-  saviour: "https://github.com/prabhu30-bgm/The_Saviour",
+  pixable: 'https://github.com/prabhu30-bgm/Pixable-API',
+  bms: 'https://github.com/prabhu30-bgm/Public-Transport-Management-Platform',
+  saviour: 'https://github.com/prabhu30-bgm/The_Saviour',
   linkedin: 'https://www.linkedin.com/in/basavaprabhu-kudenatti/',
   leetcode: 'https://leetcode.com/u/5kCp4D1N4Q/',
   shortIntro: 'MERN Portfolio - Basavaprabhu',
 };
 
-export const timelineData = [
+const strengths = [
+  { name: 'SOFTWARE DEVELOPER', value: '90%' },
+  { name: 'FULL STACK DEVELOPER', value: '80%' },
+  { name: 'AI ENTHUSIAST', value: '92%' },
+  { name: 'TECH EXPLORER', value: '85%' },
+];
+
+const timelineData = [
   {
     id: 'internship-1',
     type: 'experience',
@@ -86,36 +95,130 @@ export const timelineData = [
   },
 ];
 
-export const skillsData = [
-  { id: 'js', name: 'JavaScript', category: 'languages', level: 75, x: 20, y: 12, connections: ['html', 'react', 'node'] },
-  { id: 'java', name: 'Java', category: 'languages', level: 78, x: 20, y: 48, connections: ['oops', 'springboot'] },
-  { id: 'c', name: 'C', category: 'languages', level: 60, x: 20, y: 66, connections: ['cpp'] },
+const techStackData = [
+  // Programming
+  {
+    id: 'javascript',
+    name: 'Javascript',
+    category: 'programming',
+    description: 'Web development, core scripting',
+    icon: 'js',
+  },
+  {
+    id: 'java',
+    name: 'Java',
+    category: 'programming',
+    description: 'Core OOP, enterprise development',
+    icon: 'java',
+  },
+  {
+    id: 'cpp',
+    name: 'C / C++',
+    category: 'programming',
+    description: 'Systems programming, memory management',
+    icon: 'cpp',
+  },
 
-  { id: 'html', name: 'HTML5', category: 'frontend', level: 82, x: 50, y: 12, connections: ['css'] },
-  { id: 'css', name: 'CSS3', category: 'frontend', level: 80, x: 50, y: 28, connections: ['bootstrap', 'responsive'] },
-  { id: 'bootstrap', name: 'Bootstrap', category: 'frontend', level: 72, x: 50, y: 44, connections: ['react'] },
-  { id: 'react', name: 'React', category: 'frontend', level: 75, x: 50, y: 62, connections: ['node'] },
+  // Web Development
+  {
+    id: 'react',
+    name: 'React',
+    category: 'web_dev',
+    description: 'Frontend library, UI components',
+    icon: 'react',
+  },
+  {
+    id: 'nodejs',
+    name: 'Node.js',
+    category: 'web_dev',
+    description: 'Backend runtime, REST APIs',
+    icon: 'node',
+  },
+  {
+    id: 'express',
+    name: 'Express.js',
+    category: 'web_dev',
+    description: 'Web framework, middleware & routing',
+    icon: 'express',
+  },
+  {
+    id: 'springboot',
+    name: 'Spring Boot',
+    category: 'web_dev',
+    description: 'Java enterprise backend framework',
+    icon: 'springboot',
+  },
+  {
+    id: 'html5',
+    name: 'Html5',
+    category: 'web_dev',
+    description: 'Web layouts & semantic markup',
+    icon: 'html5',
+  },
+  {
+    id: 'css3',
+    name: 'Css3',
+    category: 'web_dev',
+    description: 'Web styling, responsive design',
+    icon: 'css3',
+  },
+  {
+    id: 'bootstrap',
+    name: 'Bootstrap',
+    category: 'web_dev',
+    description: 'Responsive UI components & grid',
+    icon: 'bootstrap',
+  },
 
-  { id: 'node', name: 'Node.js', category: 'backend', level: 70, x: 82, y: 18, connections: ['express', 'rest'] },
-  { id: 'express', name: 'Express.js', category: 'backend', level: 70, x: 82, y: 38, connections: ['mongodb'] },
-  { id: 'mongodb', name: 'MongoDB', category: 'backend', level: 72, x: 82, y: 58, connections: ['mysql'] },
-  { id: 'mysql', name: 'MySQL', category: 'backend', level: 78, x: 82, y: 78, connections: ['rest'] },
+  // Tools
+  {
+    id: 'mongodb',
+    name: 'MongoDB',
+    category: 'tools',
+    description: 'NoSQL database, document store',
+    icon: 'mongodb',
+  },
+  {
+    id: 'mysql',
+    name: 'MySQL',
+    category: 'tools',
+    description: 'Relational database, SQL queries',
+    icon: 'mysql',
+  },
+  {
+    id: 'github',
+    name: 'GitHub',
+    category: 'tools',
+    description: 'Version control, Git repository workflows',
+    icon: 'github',
+  },
 
-  { id: 'github', name: 'GitHub', category: 'devops', level: 75, x: 112, y: 18, connections: ['vscode'] },
-  { id: 'dsa', name: 'DSA', category: 'devops', level: 65, x: 112, y: 66, connections: ['problem-solving'] },
-  { id: 'oops', name: 'OOPS', category: 'devops', level: 75, x: 112, y: 78, connections: ['springboot'] },
-  { id: 'springboot', name: 'Springboot', category: 'devops', level: 55, x: 112, y: 88, connections: ['java'] },
-  { id: 'leetcode', name: 'LeetCode Practice', category: 'devops', level: 65, x: 112, y: 94, connections: ['dsa'] },
+  // Concepts
+  {
+    id: 'dsa',
+    name: 'DSA & Algorithms',
+    category: 'concepts',
+    description: 'Problem solving, logic & complexity',
+    icon: 'dsa',
+  },
 ];
 
-export const projectsData = [
+const categoryTabs = [
+  { id: 'all', label: 'All', iconName: 'zap' },
+  { id: 'programming', label: 'Programming', iconName: 'code2' },
+  { id: 'web_dev', label: 'Web Development', iconName: 'laptop' },
+  { id: 'tools', label: 'Tools', iconName: 'wrench' },
+  { id: 'concepts', label: 'Concepts', iconName: 'lightbulb' },
+];
+
+const projectsData = [
   {
     id: 'proj-1',
     title: 'TheSaviour',
     period: 'Apr 2026 - July 2026',
     description:
       'Developing a community-based disaster support platform to provide quick assistance during emergencies. Features include user authentication, priority-based help requests, food and medicine support, and emergency assistance tracking.',
-    image: '/assets/Saviour.png',
+    image: './assets/Saviour.png',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'MERN Stack'],
     githubUrl: profile.saviour,
     liveUrl: '',
@@ -127,7 +230,7 @@ export const projectsData = [
     period: '',
     description:
       'Developed a web-based system to help students access bus-related information efficiently. Built responsive frontend interfaces, login system, dashboard, and admin management features as a Frontend Developer.',
-    image: '/assets/BMS.png',
+    image: './assets/BMS.png',
     tags: ['PHP', 'HTML', 'CSS', 'JavaScript', 'XAMPP'],
     githubUrl: profile.bms,
     liveUrl: '',

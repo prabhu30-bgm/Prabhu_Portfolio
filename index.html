@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <title>Basavaprabhu Kudenatti | Full Stack MERN Developer</title>
+  <meta name="description"
+    content="Portfolio of Basavaprabhu Kudenatti, an MCA student and Full Stack MERN Developer focused on Java, databases, DSA, and real-world web applications." />
+  <meta name="keywords"
+    content="Basavaprabhu Kudenatti, Full Stack MERN Developer, MCA Student, Java Developer, Database Developer, React, Node.js, Express.js, MongoDB, MySQL, Bengaluru" />
+  <meta name="author" content="Basavaprabhu Kudenatti" />
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Basavaprabhu Kudenatti | Full Stack MERN Developer" />
+  <meta property="og:description"
+    content="MCA student at BMS Institute of Technology & Management focused on Java, databases, MERN stack development, and DSA." />
+  <meta property="og:image" content="./assets/prabhu.JPG" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Basavaprabhu Kudenatti | Full Stack MERN Developer" />
+  <meta name="twitter:description"
+    content="Portfolio of Basavaprabhu Kudenatti, an MCA student and Full Stack MERN Developer focused on Java, databases, DSA, and real-world web applications." />
+  <meta name="twitter:image" content="./assets/prabhu.JPG" />
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- External Libraries for Smooth Scroll, Fireworks Confetti & EmailJS -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body class="bg-darkBg text-lightText font-sans selection:bg-accentNeon/30 selection:text-white antialiased overflow-x-hidden">
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress-bar" class="scroll-progress" style="transform: scaleX(0);"></div>
+
+  <!-- Ambient Dynamic Cursor Glow Dot (Desktop only) -->
+  <div id="cursor-glow" class="cursor-glow-dot hidden md:block"></div>
+
+  <!-- =========================================================
+       NAVIGATION BAR
+  ========================================================= -->
+  <nav id="navbar" class="fixed top-6 left-0 right-0 z-50 px-4 md:px-8 max-w-7xl mx-auto transition-all duration-500">
+    <div class="glass-nav rounded-[20px] px-6 py-4 flex items-center justify-between shadow-cardGlow max-w-5xl mx-auto relative">
+
+      <!-- Logo Button -->
+      <button type="button" id="nav-logo" class="flex items-center justify-center transition-transform active:scale-95 cursor-pointer relative w-8 h-8 group" aria-label="Scroll to Top">
+        <!-- Pulsing glow ring -->
+        <span class="absolute inset-0 rounded-full bg-accentNeon/20 animate-ping pointer-events-none group-hover:bg-accentNeon/30 transition-colors"></span>
+        <div class="relative w-8 h-8 flex items-center justify-center z-10">
+          <svg viewBox="0 0 100 100" class="w-5.5 h-5.5 text-white group-hover:text-accentNeon transition-colors duration-300">
+            <path d="M 25 80 L 25 20 C 40 20, 40 45, 25 45 C 45 45, 45 80, 25 80 M 55 20 L 55 80 M 75 20 L 55 50 L 75 80" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </button>
+
+      <!-- Desktop Nav Items -->
+      <div id="desktop-nav" class="hidden md:flex items-center gap-1 relative">
+        <button type="button" data-nav="home" class="nav-link text-xs font-medium tracking-wide font-mono transition-colors relative px-4 py-2.5 cursor-pointer select-none flex flex-col items-center justify-center text-white font-bold">
+          <span>SYSTEM INITIALIZATION</span>
+          <div class="nav-active-underline absolute bottom-0 left-4 right-4 h-[2px] bg-yellow-400 shadow-[0_0_10px_#facc15]"></div>
+        </button>
+        <button type="button" data-nav="about" class="nav-link text-xs font-medium tracking-wide font-mono transition-colors relative px-4 py-2.5 cursor-pointer select-none flex flex-col items-center justify-center text-secondaryText hover:text-white">
+          <span>DOSSIER</span>
+        </button>
+        <button type="button" data-nav="skills" class="nav-link text-xs font-medium tracking-wide font-mono transition-colors relative px-4 py-2.5 cursor-pointer select-none flex flex-col items-center justify-center text-secondaryText hover:text-white">
+          <span>SYSTEMS</span>
+        </button>
+        <button type="button" data-nav="projects" class="nav-link text-xs font-medium tracking-wide font-mono transition-colors relative px-4 py-2.5 cursor-pointer select-none flex flex-col items-center justify-center text-secondaryText hover:text-white">
+          <span>LABS</span>
+        </button>
+        <button type="button" data-nav="education" class="nav-link text-xs font-medium tracking-wide font-mono transition-colors relative px-4 py-2.5 cursor-pointer select-none flex flex-col items-center justify-center text-secondaryText hover:text-white">
+          <span>UPGRADES</span>
+        </button>
+        <button type="button" data-nav="contact" class="nav-link text-xs font-medium tracking-wide font-mono transition-colors relative px-4 py-2.5 cursor-pointer select-none flex flex-col items-center justify-center text-secondaryText hover:text-white">
+          <span>SECURE_LINK</span>
+        </button>
+      </div>
+
+      <!-- Desktop Hire Me Button -->
+      <div class="hidden md:block">
+        <button type="button" data-nav="contact" class="hire-me-btn bg-yellow-400 text-black text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(250,204,21,0.5)] flex items-center gap-1.5 cursor-pointer transform hover:scale-105 active:scale-95">
+          Hire Me
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 7h10v10"></path>
+            <path d="M7 17 17 7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button type="button" id="mobile-menu-toggle" class="md:hidden text-white p-2 hover:text-accentNeon transition-colors relative z-50 flex items-center justify-center cursor-pointer" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="stroke-current">
+          <line id="burger-line-1" x1="4" y1="6" x2="20" y2="6" stroke-width="2.5" stroke-linecap="round" style="transform-origin: 12px 6px; transition: transform 0.3s ease, y 0.3s ease;"></line>
+          <line id="burger-line-2" x1="4" y1="12" x2="20" y2="12" stroke-width="2.5" stroke-linecap="round" style="transition: opacity 0.2s ease;"></line>
+          <line id="burger-line-3" x1="4" y1="18" x2="20" y2="18" stroke-width="2.5" stroke-linecap="round" style="transform-origin: 12px 18px; transition: transform 0.3s ease, y 0.3s ease;"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-x-0 top-24 z-40 mx-4 glass-nav rounded-3xl p-8 flex-col gap-6 md:hidden shadow-cardGlow opacity-0 -translate-y-5 transition-all duration-300">
+      <div class="flex flex-col gap-5 items-center text-center">
+        <button type="button" data-nav="home" class="mobile-nav-link text-xl font-display font-medium tracking-wide transition-colors cursor-pointer text-accentNeon font-bold">SYSTEM INITIALIZATION</button>
+        <button type="button" data-nav="about" class="mobile-nav-link text-xl font-display font-medium tracking-wide transition-colors cursor-pointer text-secondaryText hover:text-white">DOSSIER</button>
+        <button type="button" data-nav="skills" class="mobile-nav-link text-xl font-display font-medium tracking-wide transition-colors cursor-pointer text-secondaryText hover:text-white">SYSTEMS</button>
+        <button type="button" data-nav="projects" class="mobile-nav-link text-xl font-display font-medium tracking-wide transition-colors cursor-pointer text-secondaryText hover:text-white">LABS</button>
+        <button type="button" data-nav="education" class="mobile-nav-link text-xl font-display font-medium tracking-wide transition-colors cursor-pointer text-secondaryText hover:text-white">UPGRADES</button>
+        <button type="button" data-nav="contact" class="mobile-nav-link text-xl font-display font-medium tracking-wide transition-colors cursor-pointer text-secondaryText hover:text-white">SECURE_LINK</button>
+
+        <button type="button" data-nav="contact" class="hire-me-btn w-full max-w-[200px] mt-4 bg-yellow-400 text-black text-xs font-bold uppercase tracking-wider py-3.5 rounded-full transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-[0_0_15px_rgba(250,204,21,0.5)] active:scale-95">
+          Hire Me
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 7h10v10"></path>
+            <path d="M7 17 17 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- =========================================================
+         SECTION 1: HERO (SYSTEM INITIALIZATION)
+    ========================================================= -->
+    <section id="home" class="relative flex w-full justify-center bg-brand-bg overflow-hidden py-16 md:py-20 lg:py-24">
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12 min-h-[520px] md:min-h-[580px] lg:min-h-[640px] flex items-center">
+
+        <!-- Background Ironman Image -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" style="mask-image: radial-gradient(ellipse 95% 95% at 72% 45%, black 50%, transparent 98%); -webkit-mask-image: radial-gradient(ellipse 95% 95% at 72% 45%, black 50%, transparent 98%);">
+          <img src="./assets/ironman.png" alt="Basavaprabhu S K" class="w-full h-full object-cover object-[75%_20%] md:object-[72%_22%] lg:object-[70%_25%] opacity-95 scale-110 md:scale-120 lg:scale-125 transition-transform duration-500" />
+          <!-- Multi-directional soft blend gradients for readable text contrast on left -->
+          <div class="absolute inset-0 bg-gradient-to-r from-brand-bg via-brand-bg/70 to-transparent w-full lg:w-2/3"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-bg via-transparent to-brand-bg/40"></div>
+        </div>
+
+        <!-- Ambient background glow -->
+        <div class="absolute right-[5%] top-1/3 h-[26rem] w-[26rem] rounded-full bg-accentNeon/8 blur-[150px] pointer-events-none z-0"></div>
+
+        <!-- Main Hero Grid Content -->
+        <div class="relative z-10 grid w-full grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20 py-6 md:py-10">
+          <div class="flex flex-col justify-center text-left lg:col-span-7 space-y-4">
+
+            <!-- Intro System Header -->
+            <div class="mb-2 flex flex-col font-display text-4xl sm:text-[56px] lg:text-[72px] font-black leading-[0.95] tracking-[0.05em] uppercase">
+              <div class="overflow-hidden py-0.5">
+                <span class="block text-red-200/70 hero-reveal hero-reveal-1">
+                  HELLO I'M
+                </span>
+              </div>
+              <div class="overflow-hidden py-0.5">
+                <span class="block text-white hero-reveal hero-reveal-2">
+                  BASAVAPRABHU
+                </span>
+              </div>
+            </div>
+
+            <!-- Role / Subtitle -->
+            <div class="overflow-hidden py-0.5 mt-0">
+              <span class="block font-mono text-xs md:text-sm font-bold tracking-[0.15em] text-yellow-300 uppercase hero-reveal hero-reveal-3">
+                MCA STUDENT &nbsp;|&nbsp; SOFTWARE DEVELOPER
+              </span>
+            </div>
+
+            <!-- Description -->
+            <p class="mt-4 text-red-100/85 text-xs md:text-sm max-w-lg font-sans font-medium tracking-wide leading-relaxed hero-reveal hero-reveal-4">
+              Building innovative digital solutions with edge technologies and a passion for perfection
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="mt-6 flex flex-wrap gap-4 hero-reveal hero-reveal-5">
+              <a href="#projects" class="bg-[#e6000c] hover:bg-[#ff1e27] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-sm transition-all duration-300 shadow-[0_4px_25px_rgba(230,0,12,0.5)] border border-red-500 uppercase flex items-center justify-center cursor-pointer hover:scale-[1.02] active:scale-[0.98]">
+                ACCESS SYSTEM
+              </a>
+
+              <a href="./assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="bg-black/30 hover:bg-white/10 text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-sm border border-red-300/40 hover:border-white transition-all duration-300 uppercase cursor-pointer flex items-center justify-center backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98]">
+                EXPLORE INTERFACE
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 2: ABOUT (DOSSIER)
+    ========================================================= -->
+    <section id="about" class="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28">
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12">
+        <!-- Background decorations bounded to container -->
+        <div class="absolute left-[-2rem] top-1/4 h-[22rem] w-[22rem] rounded-full bg-accentNeon/5 blur-[120px] pointer-events-none"></div>
+
+        <div class="mb-14">
+          <div class="mb-3 flex w-full items-baseline justify-between">
+            <span class="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+              About
+            </span>
+            <span class="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-neutral-400 sm:block">
+              Biography
+            </span>
+          </div>
+          <h2 class="block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
+            OPERATOR
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-20">
+          <!-- Portrait Card with Dual-Image Crossfade -->
+          <div class="group relative h-[320px] overflow-hidden rounded-[32px] border border-white/10 bg-brand-card shadow-[0_24px_70px_rgba(0,0,0,0.6)] lg:col-span-5 lg:h-[460px] animate-on-scroll">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+
+            <div id="about-parallax-img" class="w-full h-[125%] -top-[12.5%] absolute transition-transform duration-300 ease-out">
+              <!-- Default Image: Real Portrait -->
+              <img src="./assets/ironman2.png" alt="Basavaprabhu Kudenatti Portrait" class="absolute inset-0 w-full h-full object-cover object-[center_85%] transition-all duration-700 ease-in-out opacity-100 group-hover:opacity-0 group-hover:scale-105" />
+              <!-- Hover Image: Ironman Art -->
+              <img src="./assets/prabhu.JPG" alt="Ironman Art" class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100 group-hover:scale-105" />
+            </div>
+          </div>
+
+          <!-- Bio Information & Strength Bars -->
+          <div class="grid gap-6 lg:col-span-7 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)] animate-on-scroll">
+            <div class="space-y-5">
+              <div class="mb-2">
+                <span class="inline-block text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-white border-b-2 border-yellow-400 pb-1">
+                  ABOUT AN OPERATOR
+                </span>
+              </div>
+
+              <p class="text-[13px] leading-6 text-neutral-300 font-medium">
+                I'm Basavaprabhu Kudenatti, a Computer Science student at BMS institute of technology & management.
+              </p>
+              <p class="text-[13px] leading-6 text-neutral-300 font-medium">
+                Interested in building real-world web applications. I build modern, scalable and user-friendly applications with clean code.
+              </p>
+              <p class="text-[13px] leading-6 text-neutral-300 font-medium">
+                Currently exploring AI and its applications in web development while continuously strengthening my programming skills through hands-on projects.
+              </p>
+
+              <button type="button" id="btn-open-modal" class="border border-white/10 bg-white/5 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white transition hover:border-yellow-400 hover:bg-accentNeon hover:text-black rounded-sm cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-[0.98]">
+                KNOW MORE
+              </button>
+            </div>
+
+            <!-- Strengths Progress Bars -->
+            <div class="h-fit self-start rounded-md border border-white/5 bg-brand-card/80 p-6 backdrop-blur-md lg:translate-x-10 shadow-[0_12px_40px_rgba(0,0,0,0.3)]">
+              <div class="space-y-6" id="strengths-container">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-mono font-bold tracking-wider text-neutral-300">SOFTWARE DEVELOPER</span>
+                  </div>
+                  <div class="h-1.5 overflow-hidden bg-white/5 rounded-none border border-white/5">
+                    <div class="strength-bar h-full bg-gradient-to-r from-red-600 via-red-500 to-yellow-400 shadow-[0_0_10px_rgba(255,30,40,0.5)] w-0 transition-all duration-1000 ease-out" data-width="90%"></div>
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-mono font-bold tracking-wider text-neutral-300">FULL STACK DEVELOPER</span>
+                  </div>
+                  <div class="h-1.5 overflow-hidden bg-white/5 rounded-none border border-white/5">
+                    <div class="strength-bar h-full bg-gradient-to-r from-red-600 via-red-500 to-yellow-400 shadow-[0_0_10px_rgba(255,30,40,0.5)] w-0 transition-all duration-1000 ease-out" data-width="80%"></div>
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-mono font-bold tracking-wider text-neutral-300">AI ENTHUSIAST</span>
+                  </div>
+                  <div class="h-1.5 overflow-hidden bg-white/5 rounded-none border border-white/5">
+                    <div class="strength-bar h-full bg-gradient-to-r from-red-600 via-red-500 to-yellow-400 shadow-[0_0_10px_rgba(255,30,40,0.5)] w-0 transition-all duration-1000 ease-out" data-width="92%"></div>
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-mono font-bold tracking-wider text-neutral-300">TECH EXPLORER</span>
+                  </div>
+                  <div class="h-1.5 overflow-hidden bg-white/5 rounded-none border border-white/5">
+                    <div class="strength-bar h-full bg-gradient-to-r from-red-600 via-red-500 to-yellow-400 shadow-[0_0_10px_rgba(255,30,40,0.5)] w-0 transition-all duration-1000 ease-out" data-width="85%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Profile Modal Dialog -->
+    <div id="profile-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div id="modal-backdrop" class="absolute inset-0 bg-black/85 backdrop-blur-md opacity-0 transition-opacity duration-300"></div>
+
+      <div id="modal-card" data-lenis-prevent class="relative z-10 flex max-h-[70vh] w-full max-w-2xl flex-col overflow-hidden rounded-[28px] border border-white/10 bg-brand-card p-8 text-left shadow-[0_25px_80px_rgba(0,0,0,0.8)] sm:p-10 opacity-0 scale-95 translate-y-5 transition-all duration-300">
+        <button type="button" id="btn-close-modal" class="absolute right-6 top-6 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:bg-[#ff1e27] hover:text-white text-white cursor-pointer" aria-label="Close details modal">
+          <svg class="h-4 w-4 stroke-current" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <div class="mb-6 z-20">
+          <h3 class="font-display text-xl font-black text-white">My Profile</h3>
+          <p class="mt-0.5 text-[10px] font-bold uppercase tracking-[0.3em] text-yellow-400">Basavaprabhu Kudenatti</p>
+        </div>
+
+        <div class="relative z-10 flex-1 overflow-hidden pr-2 isolate">
+          <div data-lenis-prevent class="max-h-[38vh] overscroll-contain overflow-y-auto pr-6 pb-4 custom-modal-scroll">
+            <div class="space-y-5 font-sans text-xs leading-relaxed text-red-100/90 sm:text-sm">
+              <p>I am an MCA student with a strong interest in Java development, database systems, and full stack web development.</p>
+              <p>I enjoy building projects that solve real-world problems and improve the broader user experience. My current technical skills include Java, MySQL, MongoDB, JavaScript, React, HTML, CSS, and basic MERN stack development.</p>
+              <div class="space-y-2">
+                <p class="font-semibold text-white">Projects I've worked on include:</p>
+                <ul class="list-disc space-y-2 pl-5 text-red-100/90">
+                  <li><strong class="font-semibold text-white">Bus Management System</strong> – a system for simplifying bus-related access for students.</li>
+                  <li><strong class="font-semibold text-white">Pixabay Image Gallery</strong> – a MERN-style API integration app.</li>
+                  <li><strong class="font-semibold text-white">TheSaviour</strong> – an ongoing community-based disaster support platform.</li>
+                </ul>
+              </div>
+              <p>Outside of technical work, I've also taken part in organizing coding events and college initiatives, which strengthened my communication and leadership skills.</p>
+              <p>I'm currently growing through LeetCode practice, DSA, backend fundamentals, and hands-on project building.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 3: SKILLS (SYSTEMS)
+    ========================================================= -->
+    <section id="skills" class="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28">
+      <!-- Background ambient lighting -->
+      <div class="absolute left-[-6rem] top-1/3 h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[140px] pointer-events-none"></div>
+      <div class="absolute right-[-6rem] bottom-10 h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[140px] pointer-events-none"></div>
+
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12 flex flex-col items-start">
+        <!-- Section Header -->
+        <div class="mb-3 flex w-full items-baseline justify-between">
+          <span class="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+            Skills
+          </span>
+          <span class="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-neutral-400 sm:block">
+            Tech Arsenal
+          </span>
+        </div>
+
+        <h2 class="mb-6 block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
+          CORE SYSTEMS
+        </h2>
+
+        <!-- Filter Category Pills -->
+        <div id="skills-tabs" class="flex flex-wrap items-center justify-start gap-2 mb-8 w-full">
+          <!-- Dynamically inserted / rendered buttons via JavaScript -->
+        </div>
+
+        <!-- 3-Column Grid of Tech Stack Cards -->
+        <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 w-full transition-all duration-300">
+          <!-- Rendered via JavaScript -->
+        </div>
+
+        <!-- Bottom indicator -->
+        <div id="skills-count" class="mt-8 text-left text-xs font-mono text-neutral-500 w-full">
+          Showing 14 technologies
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 4: PROJECTS (LABS)
+    ========================================================= -->
+    <section id="projects" class="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28">
+      <div class="absolute left-[-6rem] top-[-6rem] h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[140px] pointer-events-none"></div>
+      <div class="absolute bottom-12 left-12 h-20 w-20 rounded-full border border-white/5 pointer-events-none"></div>
+
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12 flex flex-col">
+        <!-- Section Header -->
+        <div class="mb-3 flex w-full items-baseline justify-between">
+          <span class="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+            Innovation Lab
+          </span>
+          <a href="https://github.com/prabhu30-bgm/" target="_blank" rel="noopener noreferrer" class="text-[10px] font-semibold tracking-[0.25em] text-neutral-400 hover:text-yellow-400 uppercase transition-colors hover:scale-[1.02] active:scale-[0.98]">
+            VIEW ALL PROTOTYPES &gt;
+          </a>
+        </div>
+
+        <h2 class="mb-10 block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
+          PROTOTYPE LABORATORY
+        </h2>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Project 1: TheSaviour -->
+          <div class="h-full">
+            <div class="group relative hud-panel-white-bold p-7 flex flex-col justify-between min-h-[580px] h-full rounded-none">
+              <!-- Corner L-Ticks for Sci-fi/Cyber design -->
+              <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400"></div>
+              <div class="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400"></div>
+              <div class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400"></div>
+              <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400"></div>
+
+              <div class="space-y-6">
+                <!-- Project Image -->
+                <div class="relative w-full aspect-video overflow-hidden rounded-none border border-white/10 bg-brand-card">
+                  <div class="absolute inset-0 w-full h-full transition-all duration-700 group-hover:scale-[1.02]">
+                    <img src="./assets/Saviour.png" alt="TheSaviour" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <!-- MK identifier -->
+                  <span class="block text-[10px] font-mono font-bold tracking-[0.2em] text-yellow-400">
+                    MK - I
+                  </span>
+
+                  <h3 class="text-[16px] font-mono font-bold tracking-wide text-white uppercase">TheSaviour</h3>
+
+                  <p class="text-[13px] leading-relaxed text-neutral-300 min-h-[80px]">
+                    Developing a community-based disaster support platform to provide quick assistance during emergencies. Features include user authentication, priority-based help requests, food and medicine support, and emergency assistance tracking.
+                  </p>
+
+                  <!-- Tech Stack tags -->
+                  <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">MongoDB</span>
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">Express.js</span>
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">React</span>
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">Node.js</span>
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">MERN Stack</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons & Status -->
+              <div class="space-y-6 mt-8">
+                <div class="flex gap-4">
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="border border-white/10 bg-white/5 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white hover:bg-accentNeon hover:text-black hover:border-yellow-400 transition-all duration-300 rounded-none cursor-pointer flex-1 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-[0.98]">
+                    LIVE DEMO ↗
+                  </a>
+                  <a href="https://github.com/prabhu30-bgm/The_Saviour" target="_blank" rel="noopener noreferrer" class="border border-white/10 bg-white/5 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white hover:bg-accentNeon hover:text-black hover:border-yellow-400 transition-all duration-300 rounded-none cursor-pointer flex-1 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-[0.98]">
+                    GITHUB
+                  </a>
+                </div>
+
+                <div class="flex items-center justify-between border-t border-white/10 pt-4 text-[9px] font-mono tracking-wider text-neutral-500 uppercase">
+                  <span>STATUS // ACTIVE_DEV</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Bus Management System -->
+          <div class="h-full">
+            <div class="group relative hud-panel-white-bold p-7 flex flex-col justify-between min-h-[580px] h-full rounded-none">
+              <!-- Corner L-Ticks for Sci-fi/Cyber design -->
+              <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400"></div>
+              <div class="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400"></div>
+              <div class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400"></div>
+              <div class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-red-400/50 transition-colors duration-300 group-hover:border-yellow-400"></div>
+
+              <div class="space-y-6">
+                <!-- Project Image -->
+                <div class="relative w-full aspect-video overflow-hidden rounded-none border border-white/10 bg-brand-card">
+                  <div class="absolute inset-0 w-full h-full transition-all duration-700 group-hover:scale-[1.02]">
+                    <img src="./assets/BMS.png" alt="Bus Management System" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <!-- MK identifier -->
+                  <span class="block text-[10px] font-mono font-bold tracking-[0.2em] text-yellow-400">
+                    MK - II
+                  </span>
+
+                  <h3 class="text-[16px] font-mono font-bold tracking-wide text-white uppercase">Bus Management System</h3>
+
+                  <p class="text-[13px] leading-relaxed text-neutral-300 min-h-[80px]">
+                    Developed a web-based system to help students access bus-related information efficiently. Built responsive frontend interfaces, login system, dashboard, and admin management features as a Frontend Developer.
+                  </p>
+
+                  <!-- Tech Stack tags -->
+                  <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">PHP</span>
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">HTML</span>
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">CSS</span>
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">JavaScript</span>
+                    <span class="border border-white/10 px-2.5 py-1 text-[9px] font-mono uppercase text-neutral-300 bg-white/5 rounded-none">XAMPP</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons & Status -->
+              <div class="space-y-6 mt-8">
+                <div class="flex gap-4">
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="border border-white/10 bg-white/5 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white hover:bg-accentNeon hover:text-black hover:border-yellow-400 transition-all duration-300 rounded-none cursor-pointer flex-1 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-[0.98]">
+                    LIVE DEMO ↗
+                  </a>
+                  <a href="https://github.com/prabhu30-bgm/Public-Transport-Management-Platform" target="_blank" rel="noopener noreferrer" class="border border-white/10 bg-white/5 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white hover:bg-accentNeon hover:text-black hover:border-yellow-400 transition-all duration-300 rounded-none cursor-pointer flex-1 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-[0.98]">
+                    GITHUB
+                  </a>
+                </div>
+
+                <div class="flex items-center justify-between border-t border-white/10 pt-4 text-[9px] font-mono tracking-wider text-neutral-500 uppercase">
+                  <span>STATUS // DEPLOYED_SYS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 5: EDUCATION & EXPERIENCE (UPGRADES)
+    ========================================================= -->
+    <section id="education" class="relative flex w-full justify-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28">
+      <div class="absolute right-[-6rem] top-[-6rem] h-[26rem] w-[26rem] rounded-full bg-accentNeon/5 blur-[130px] pointer-events-none"></div>
+      <div class="absolute top-12 left-12 h-20 w-20 rounded-full border border-white/5 pointer-events-none"></div>
+
+      <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col overflow-visible px-6 md:px-10 lg:px-12">
+        <!-- Section Header -->
+        <div class="mb-3 flex w-full items-baseline justify-between">
+          <span class="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+            Experience
+          </span>
+          <span class="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-neutral-400 sm:block">
+            Career timeline
+          </span>
+        </div>
+
+        <h2 class="mb-10 block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
+          EDUCATION & EXPERIENCE
+        </h2>
+
+        <!-- Switcher Tab Header -->
+        <div class="relative isolate mb-14 flex w-full max-w-xs rounded-full p-1 bg-brand-card border border-white/10">
+          <button type="button" id="tab-btn-experience" class="flex-1 flex items-center justify-center gap-2 py-2.5 px-5 rounded-full text-[11px] font-sans font-bold uppercase tracking-wider transition-all duration-300 relative z-10 bg-transparent cursor-pointer text-white">
+            <div id="tab-active-capsule" class="absolute inset-0 rounded-full -z-10 shadow-[0_0_15px_rgba(219,46,46,0.6)] bg-[var(--color-brand-accent)] transition-all duration-300 ease-out"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+            </svg>
+            INTERNSHIP
+          </button>
+
+          <button type="button" id="tab-btn-education" class="flex-1 flex items-center justify-center gap-2 py-2.5 px-5 rounded-full text-[11px] font-sans font-bold uppercase tracking-wider transition-all duration-300 relative z-10 bg-transparent cursor-pointer text-[#A0A0A0]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path>
+              <path d="M22 10v6"></path>
+              <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path>
+            </svg>
+            EDUCATION
+          </button>
+        </div>
+
+        <!-- Timeline Main Display -->
+        <div class="relative ml-2 flex h-auto w-full flex-col gap-12 overflow-visible pl-12">
+          <!-- Background Static Track Line -->
+          <div class="absolute left-[3px] top-4 bottom-4 w-[1px] bg-white/10"></div>
+
+          <!-- Dynamic Timeline Items Container -->
+          <div id="timeline-items-container" class="flex flex-col gap-12 w-full">
+            <!-- Timeline items rendered via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 6: CONTACT (SECURE_LINK)
+    ========================================================= -->
+    <section id="contact" class="relative flex w-full justify-center items-center bg-brand-bg overflow-hidden border-t border-white/5 py-20 md:py-24 lg:py-28">
+      <div class="absolute right-0 bottom-0 w-[400px] h-[400px] bg-accentNeon/3 rounded-full blur-[130px] pointer-events-none"></div>
+
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-12">
+        <div class="mb-14">
+          <div class="mb-3 flex w-full items-baseline justify-between">
+            <span class="block text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-400">
+              Connect
+            </span>
+            <span class="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-neutral-400 sm:block">
+              Get In Touch
+            </span>
+          </div>
+          <h2 class="block text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-4xl">
+            START A CONVERSATION
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
+          <!-- Sidebar Details Block -->
+          <div class="lg:col-span-5 flex flex-col gap-10 justify-between">
+            <div>
+              <h3 class="text-2xl font-bold font-display text-white uppercase tracking-tight">Contact Details</h3>
+              <p class="text-secondaryText text-sm font-light leading-relaxed mt-4 max-w-sm">
+                I am open to internship and full-time opportunities where I can learn, contribute, and grow as a software developer.
+              </p>
+              <div class="mt-8 flex flex-col gap-6">
+                <!-- Email Item -->
+                <div class="flex items-center gap-4 group cursor-pointer w-fit transition-transform duration-300 hover:translate-x-2">
+                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accentNeon group-hover:bg-accentNeon group-hover:text-black transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-secondaryText uppercase font-semibold block tracking-wider">Email</span>
+                    <a href="mailto:basavaprabhukudenatti@gmail.com" class="text-sm text-white hover:text-accentNeon transition-colors font-medium">basavaprabhukudenatti@gmail.com</a>
+                  </div>
+                </div>
+
+                <!-- Phone Item -->
+                <div class="flex items-center gap-4 group cursor-pointer w-fit transition-transform duration-300 hover:translate-x-2">
+                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accentNeon group-hover:bg-accentNeon group-hover:text-black transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-secondaryText uppercase font-semibold block tracking-wider">Phone</span>
+                    <a href="tel:+919972920779" class="text-sm text-white hover:text-accentNeon transition-colors font-medium">+91 9972920779</a>
+                  </div>
+                </div>
+
+                <!-- Location Item -->
+                <div class="flex items-center gap-4 group cursor-pointer w-fit transition-transform duration-300 hover:translate-x-2">
+                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accentNeon group-hover:bg-accentNeon group-hover:text-black transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-secondaryText uppercase font-semibold block tracking-wider">Location</span>
+                    <span class="text-sm text-white font-medium">Bengaluru, Karnataka, India</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Form Display -->
+          <div class="lg:col-span-7">
+            <div class="glass-card border border-white/5 rounded-3xl p-8 md:p-12 shadow-cardGlow">
+
+              <!-- Success State -->
+              <div id="form-success-banner" class="hidden py-12 flex flex-col items-center justify-center text-center gap-4">
+                <div class="w-16 h-16 rounded-full bg-accentNeon/10 flex items-center justify-center text-accentNeon shadow-glow mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold font-display text-white uppercase tracking-tight">Message Sent!</h3>
+                <p class="text-secondaryText text-sm font-light leading-relaxed max-w-sm">
+                  Thank you for reaching out. Your transmission went straight to my email inbox!
+                </p>
+              </div>
+
+              <!-- Contact Form -->
+              <form id="contact-form" class="flex flex-col gap-6" novalidate>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div class="flex flex-col gap-2">
+                    <label for="name" class="text-[10px] text-secondaryText font-bold uppercase tracking-widest">Your Name</label>
+                    <input type="text" id="name" name="name" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none transition-all focus:ring-2 focus:ring-accentNeon/20 focus:shadow-[0_0_20px_rgba(219,46,46,0.15)] focus:border-accentNeon" />
+                    <span id="name-error" class="hidden text-xs text-red-400 items-center gap-1.5 mt-1 font-light">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                        <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                      </svg>
+                      <span class="error-text">Name is required.</span>
+                    </span>
+                  </div>
+
+                  <div class="flex flex-col gap-2">
+                    <label for="email" class="text-[10px] text-secondaryText font-bold uppercase tracking-widest">Your Email</label>
+                    <input type="email" id="email" name="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none transition-all focus:ring-2 focus:ring-accentNeon/20 focus:shadow-[0_0_20px_rgba(219,46,46,0.15)] focus:border-accentNeon" />
+                    <span id="email-error" class="hidden text-xs text-red-400 items-center gap-1.5 mt-1 font-light">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                        <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                      </svg>
+                      <span class="error-text">Email is required.</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <label for="message" class="text-[10px] text-secondaryText font-bold uppercase tracking-widest">Your Message</label>
+                  <textarea id="message" name="message" rows="6" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none transition-all resize-none focus:ring-2 focus:ring-accentNeon/20 focus:shadow-[0_0_20px_rgba(219,46,46,0.15)] focus:border-accentNeon"></textarea>
+                  <span id="message-error" class="hidden text-xs text-red-400 items-center gap-1.5 mt-1 font-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" x2="12" y1="8" y2="12"></line>
+                      <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                    </svg>
+                    <span class="error-text">Message is required.</span>
+                  </span>
+                </div>
+
+                <button type="submit" id="btn-submit-form" class="mt-4 w-full bg-accentNeon text-black text-sm font-semibold uppercase tracking-wider py-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-glow group cursor-pointer hover:scale-[1.02] active:scale-[0.98]">
+                  <span id="btn-submit-text" class="flex items-center gap-2">
+                    Send Message
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+                      <path d="m22 2-7 20-4-9-9-4Z"></path>
+                      <path d="M22 2 11 13"></path>
+                    </svg>
+                  </span>
+                  <span id="btn-submit-spinner" class="hidden items-center gap-2">
+                    <span class="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></span>
+                    Sending...
+                  </span>
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Copyright & Back to Top Bar -->
+        <div class="mt-20 border-t border-white/10 pt-8 flex flex-col items-center justify-between gap-4 text-xs font-semibold uppercase tracking-wider text-neutral-400 sm:flex-row">
+          <span>Basavaprabhu Kudenatti © 2026. ALL RIGHTS RESERVED.</span>
+
+          <button type="button" id="btn-back-to-top" class="flex items-center gap-1.5 text-neutral-300 hover:text-yellow-400 transition-colors group cursor-pointer">
+            Back to top
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-y-0.5 transition-transform">
+              <path d="m5 12 7-7 7 7"></path>
+              <path d="M12 19V5"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- JavaScript Modules -->
+  <script src="./js/data.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

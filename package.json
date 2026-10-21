@@ -1,26 +1,19 @@
 {
-  "name": "portfolio-nextjs",
+  "name": "portfolio-html-css-js",
   "version": "1.0.0",
-  "private": true,
+  "description": "Portfolio of Basavaprabhu Kudenatti - Pure HTML5, CSS3 & Vanilla JavaScript",
+  "main": "serve.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "node serve.js",
+    "serve": "node serve.js"
   },
-  "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "canvas-confetti": "^1.9.4",
-    "framer-motion": "^12.40.0",
-    "lenis": "^1.3.23",
-    "lucide-react": "^0.468.0",
-    "next": "^15.5.19",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
-  }
+  "keywords": [
+    "portfolio",
+    "html5",
+    "css3",
+    "vanilla-javascript",
+    "developer-portfolio"
+  ],
+  "author": "Basavaprabhu Kudenatti",
+  "license": "MIT"
 }
